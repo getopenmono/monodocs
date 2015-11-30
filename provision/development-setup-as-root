@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "--> Installing package build infrastructure"
+apt-get install -y \
+	libicu-dev
