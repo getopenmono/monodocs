@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
+require 'bundler/setup'
 require 'gollum/app'
 
 gollum_path = File.expand_path(File.dirname(__FILE__))
