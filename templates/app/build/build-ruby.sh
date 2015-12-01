@@ -43,15 +43,17 @@ oe sudo apt-get install -y bzr git mercurial build-essential \
 ol "Installing Bundler..."
 oe sudo gem install bundler --no-ri --no-rdoc
 
-ol "Extracting app..."
-sudo mkdir -p /srv/otto-app
-sudo tar zxf /tmp/otto-app.tgz -C /srv/otto-app
-
 ol "Adding application user..."
 oe sudo adduser --disabled-password --gecos "" otto-app
 
-ol "Setting permissions..."
+ol "Cloning repo..."
+sudo mkdir -p /srv/otto-app
+# TODO: is it a problem to need access to github...?
+oe sudo git clone https://github.com/getopenmono/monodocs.git /srv/otto-app
 oe sudo chown -R otto-app: /srv/otto-app
+
+ol "Setting up repo sync..."
+oe sudo cp /srv/otto-app/provision/gollum.cron /etc/cron.hourly/monodocs
 
 ol "Configuring nginx..."
 
