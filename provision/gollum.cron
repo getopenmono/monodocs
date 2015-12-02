@@ -1,3 +1,2 @@
 #!/bin/sh -e
-USER=otto-app
-sudo -u $USER /srv/$USER/sync-with-remote-repo.sh
+*/5 * * * * otto-app /srv/otto-app/sync-with-remote-repo.sh

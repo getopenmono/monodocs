@@ -3,3 +3,6 @@
 echo "--> Installing package build infrastructure"
 apt-get install -y \
 	libicu-dev
+
+# TODO: install Passenger so that Gollum is started the same way
+# as in production, that is, reading the config.ru.
