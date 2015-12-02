@@ -30,10 +30,14 @@ GEM
     mustache (0.99.8)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    passenger (5.0.21)
+      rack
+      rake (>= 0.8.1)
     posix-spawn (0.3.11)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rake (10.4.2)
     rouge (1.10.1)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
@@ -50,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   gollum
+  passenger (>= 5.0.11)
 
 BUNDLED WITH
    1.10.6

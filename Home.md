@@ -1,3 +1,5 @@
+<!-- --- title: MonoDocs -->
+
 # Mono developer documentation
 
 Welcome to Mono documention.

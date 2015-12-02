@@ -26,7 +26,7 @@ Start a virtual machine by `otto dev`.
 Log into it by `otto dev shh`.
 
 Then start the site inside the virtual machine by
-`bundle install` and then `bundle exec gollum`.
+`bundle install` and then `bundle exec passenger start`.
 
 Now the site should be running on `http://$(otto dev address):4567/`
 
@@ -34,7 +34,17 @@ Now the site should be running on `http://$(otto dev address):4567/`
 
 Make sure to modify the otto-generated files by the templates.
 
-`otto infra`
-`otto build`
-`otto deploy`
+```
+otto infra
+otto build
+otto deploy
+```
 
+## Testing, testing, one, two...
+
+{{{{{{ blue-modern
+    alice->bob: Test
+    bob->alice: Test response
+}}}}}}
+
+$$\Omega(n^2 \times \text{log}(n))$$
