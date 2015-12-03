@@ -53,7 +53,7 @@ oe sudo git clone https://github.com/getopenmono/monodocs.git /srv/otto-app
 oe sudo chown -R otto-app: /srv/otto-app
 
 ol "Setting up repo sync..."
-oe sudo cp /srv/otto-app/provision/gollum.cron /etc/cron.hourly/monodocs
+oe sudo cp /srv/otto-app/provision/gollum.cron /etc/cron.d/monodocs
 
 ol "Configuring nginx..."
 
