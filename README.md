@@ -17,7 +17,11 @@ Then clone [the GitHub repository](https://github.com/getopenmono/monodocs)
 and run `otto`.
 
 The files that otto generates in `.otto/compiled/` need to be tweaked, so
-modify them by looking at the `templates/`; do not just copy.
+modify them by looking at the `templates/`, like
+```
+diff -uw .otto/compiled/app/dev/Vagrantfile templates/app/dev/Vagrantfile
+```
+Do not just copy.
 
 ## How to run the site locally
 
