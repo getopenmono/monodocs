@@ -2,6 +2,8 @@
 
 **In this tutorial we will go through the UI elements and how Mono's display system will draw them. We will create a simple application that demonstrates how to use the prefabricated UI elements, and how to respond to their touch events.**
 
+[[_TOC_]]
+
 <!-- Why use it -->
 Mono's display system allows you to easily composite graphical user interfaces. It automatically takes care of drawing in-between display refreshes, and utilizes the touch input system to respond to touch events.
 

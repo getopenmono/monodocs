@@ -1,6 +1,15 @@
 <!-- --- title: Display System Architecture -->
 
-<!-- Who should read this? -->
+**Mono display system is makes it easy and fast to create graphical user interfaces (GUIs). You can take advantage of the many high-level classes, that display controls or text in the screen.**
+
+#### Who should read this?
+
+In this article we will take an in-depth look at Mono's display system. You should read this if you wish to create your own *User Interface* elements or if you experience issues related to displaying graphics. Also, if you simply would like to know more about how the software works under the hood. I presume you already are familiar with other GUI system programming, like iOS or Qt.
+
+
+[[_TOC_]]
+
+## Overview
 
 The Mono framework implements a display stack that closely assembles the first computer GUI systems, like the first Mac OS or Atari TOS. It is a single display buffer that your application paints in. The buffer is placed in the display chip, and is therefore not a part of the MCU systems internal RAM. This means writing (and reading) to the display buffer is expensive operations, and should only be done in an efficient way.
 
@@ -24,15 +33,15 @@ As all classes inherit from the parent `View` class, they all define these centr
 
  * **The View Rect**: A rectangle that defines the boundaries of the view. This is the views width and height, but also its X,Y position on the display.
  * **Standard Colors**: All views share a palette of standard/default colors for borders, text, backgrounds and highlights. Changing one of these will affect all view subclasses.
- * **Dirty state**: Views can be *dirty*, meaning that they need to be repainted on the screen. You might change the content of a `TextLabelView`, and the view will need to be repainted - therefire it is *dirty*. When the view has been repainted, the dirty state is cleared.
- * **Repainting**: All `View` subclasses must define the protected method `repaint()`. Dirty views are scheduled for repaint by the display system, meaning that the `repaint()` method is automatically called to acutally draw the view. If you create your own custom views, all your shape painting *must* happen inside the `repaint()` routine.
+ * **Dirty state**: Views can be *dirty*, meaning that they need to be repainted on the screen. You might change the content of a `TextLabelView`, and the view will need to be repainted - therefore it is *dirty*. When the view has been repainted, the dirty state is cleared.
+ * **Repainting**: All `View` subclasses must define the protected method `repaint()`. Dirty views are scheduled for repaint by the display system, meaning that the `repaint()` method is automatically called to actually draw the view. If you create your own custom views, all your shape painting *must* happen inside the `repaint()` routine.
  * **Visibility state**: Views can be visible or invisible. When first created, a view is always invisible. This means it will not be scheduled for repaints at all. To make a view appear on the display, you must first call the `show()` method. This will set its state to *visible*.
 
-Since all views share a single global display buffer, you can (by mistake or purposly) position one view overlapping another. The dislay system does not have any notion of a Z-axis. To the top-most view will be the one that gets its `repaint()` method called last. The display system keeps dirty views in a queue, so they are repainted in a FIFO style manner.
+Since all views share a single global display buffer, you can (by mistake or on purpose) position one view overlapping another. The display system does not have any notion of a Z-axis. To the top-most view will be the one that gets its `repaint()` method called last. The display system keeps dirty views in a queue, so they are repainted in a FIFO style manner.
 
 When you create your own views, it is your responsibility to respect the views boundaries. Say, a view with the dimensions 100x100, must not draw any shapes outside its 100x100 rectangle. Shape drawing inside the `repaint()` method is not automatically clipped to the views bounding rectangle. It is perfectly possible to create a view, that completely ignores its bounding rectangle.
 
-*In contrast to many modern GUI systems, mono views cannot contain nested views. However, this does not mean a view cannot contain another. It just has to manually manage it.*
+> *In contrast to many modern GUI systems, mono views cannot contain nested views. However, this does not mean a view cannot contain another. It just has to manually manage it.*
 
 ## Display Coordinate System
 
