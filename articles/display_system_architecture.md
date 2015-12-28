@@ -1,8 +1,6 @@
 <!-- --- title: Display System Architecture -->
-# Display System Architecture
 
 <!-- Who should read this? -->
-
 
 The Mono framework implements a display stack that closely assembles the first computer GUI systems, like the first Mac OS or Atari TOS. It is a single display buffer that your application paints in. The buffer is placed in the display chip, and is therefore not a part of the MCU systems internal RAM. This means writing (and reading) to the display buffer is expensive operations, and should only be done in an efficient way.
 
@@ -44,7 +42,7 @@ All views and painted shapes exists in the painter's coordinate system. This coo
 
 An example of the used coordinate system is seen in the figure above. Notice how the pixel's coordinate references the upper left corner of the pixel area - not the center.
 
-Because views cannot be nested, we use only one global coordinate system. It is called the absolute coordinate system, and all shapes and views are painted relative to that. This means that if you position views with the offset coordinate ///(20,20///), you must offset all shape painting with ///(20,200///).
+Because views cannot be nested, we use only one global coordinate system. It is called the absolute coordinate system, and all shapes and views are painted relative to that. This means that if you position views with the offset coordinate \\\((20,20)\\\), you must offset all shape painting with \\\((20,20)\\\).
 
 ### Rotations
 
