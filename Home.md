@@ -12,7 +12,7 @@ it falls under the [[site license|LICENSE.txt]].
 
 ### Tutotials
 
- * [[drawing_ui_elements|Drawing UI Elements]]
+ * [[Drawing UI Elements|drawing_ui_elements]]
 
 ### In-Depth Articles
 
