@@ -77,9 +77,10 @@ If you plan to use bitmaps, keep in mind that Mono's memory is very limited. The
 
 When you write raw pixels, you must use the correct pixel color format. For mono this is **16 bit, 5-6-5 RGB colors**. Note that Mono's CPU architecture is little endian, and the display uses big endian. If you define a color like this: 
 
-```C
+```c
 uint16_t color = 0x07E0; // I think this might be a green color?
 ```
+
 The color will be interpreted by the display as: `0xE007`. For convenience you should use the `Color` class, that has a constructor that takes RGB components as separate values.
 
 ## V-Sync and refreshes
