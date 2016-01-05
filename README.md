@@ -32,7 +32,7 @@ Log into it by `otto dev shh`.
 Then start the site inside the virtual machine by
 `bundle install` and then `bundle exec passenger start`.
 
-Now the site should be running on `http://$(otto dev address):4567/`
+Now the site should be running on `http://$(otto dev address):3000/`
 
 ## How to deploy
 
