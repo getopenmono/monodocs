@@ -5,18 +5,23 @@
 This is where we will collect all information that is relevant for developing
 on [Mono](http://openmono.com).
 
-### Tutotials
+### Tutorials
 
  * [[Drawing UI Elements|drawing_ui_elements]]
 
 ### In-Depth Articles
 
  * [[Display System Architecture|display_system_architecture]]
- 
+
 ### Implementation status
 
 **[[Current Status]]**
 
+### Mono Framework API
+
+When programming Mono, you will eventually need to look into the
+[Mono FrameWork API](http://framework.kaleidoscope.one) to know how to
+interface with the Mono hardware.
 
 ### Contribute
 
