@@ -42,7 +42,7 @@
       "secret_key": "{{ user `aws_secret_key` }}",
       "region": "{{ user `aws_region` }}",
       "source_ami": "ami-21630d44",
-      "instance_type": "t2.micro",
+      "instance_type": "t2.nano",
       "ssh_username": "ubuntu",
       "ami_name": "monodocs {{timestamp}}"
     }]
