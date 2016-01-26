@@ -19,10 +19,10 @@ on [Mono](http://openmono.com).
 
 **[[Current Status]]**
 
-### Mono Framework API
+### Framework API Reference
 
 When programming Mono, you will eventually need to look into the
-[Mono FrameWork API](http://framework.kaleidoscope.one) to know how to
+[API Reference](http://developer.openmono.com/reference/latest), to know how to
 interface with the Mono hardware.
 
 ### Contribute
