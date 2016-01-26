@@ -34,6 +34,7 @@ Here is a list of the components and their implementation, sorted by category:
 * **Touch System**: Fully implemented
 	* **Touch Responder**: Fully implemented
  	* **Touch Event**: Fully implemented
+* **USB Serial I/O**: Partially implemented
  
 #### Display System
 
