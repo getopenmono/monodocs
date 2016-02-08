@@ -10,3 +10,4 @@ html
 latex
 single
 reference/*.md
+*.pyc

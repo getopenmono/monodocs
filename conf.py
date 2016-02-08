@@ -13,7 +13,8 @@
 # serve to show the default.
 
 import sys
-import os
+import os, subprocess
+from makeapi import BuildApiReference
 
 import recommonmark
 from recommonmark.parser import CommonMarkParser
@@ -384,13 +385,44 @@ epub_exclude_files = ['search.html']
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 
+def run_doxygen(folder):
+	"""Run the doxygen make command in the designated folder"""
+
+	try:
+		retcode = subprocess.call("cd %s; bash doxyrun.sh mono_framework" % folder, shell=True)
+		if retcode < 0:
+			sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
+	except OSError as e:
+		sys.stderr.write("doxygen execution failed: %s" % e)
+
+
+def generate_doxygen_xml(app):
+	"""Run the doxygen make commands if we're on the ReadTheDocs server"""
+
+	read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+	if read_the_docs_build:
+		fetch_framework()
+		run_doxygen(".")
+		BuildApiReference()
+
+def fetch_framework():
+	if not os.path.exists('mono_framework'):
+		subprocess.call('rm -rf mono_framework;' +
+			'git clone https://github.com/getopenmono/mono_framework', shell = True)
+	else:
+		subprocess.call('cd mono_framework; git pull', shell=True)
+
 # app setup hook
 def setup(app):
-    app.add_config_value('recommonmark_config', {
-                'url_resolver': lambda url: github_doc_root + url,
-                }, True)
-    print "Adding transform: AutoStructify..."
-    app.add_transform(AutoStructify)
+	
+	app.connect("builder-inited", generate_doxygen_xml)
+	
+	app.add_config_value('recommonmark_config', {
+		'url_resolver': lambda url: github_doc_root + url,
+		}, True)
+	print "Adding transform: AutoStructify..."
+	app.add_transform(AutoStructify)
 
 #     app.add_config_value('recommonmark_config', {
 #             'url_resolver': lambda url: github_doc_root + url,
