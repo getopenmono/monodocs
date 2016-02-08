@@ -1,0 +1,41 @@
+## Core Classes
+mono::IApplication
+mono::IApplicationContext
+mono::AppRunLoop
+mono::IRunLoopTask
+mono::String
+mono::Timer
+mono::DateTime
+mono::ISettings
+mono::QueueInterrupt
+mono::TouchResponder
+mono::TouchEvent
+mono::ITouchSystem
+mono::Regex
+mono::Queue
+mono::GenericQueue
+## UI Widgets
+mono::ui::View
+mono::ui::TextLabelView
+mono::ui::ButtonView
+mono::ui::ProgressBarView
+mono::ui::StatusIndicatorView
+mono::ui::ConsoleView
+mono::ui::ImageView
+mono::ui::GraphView
+mono::ui::IGraphViewDataSource
+mono::ui::TouchCalibrator
+mono::ui::ResponderView
+## Drawing
+mono::display::DisplayPainter
+mono::display::Color
+mono::display::IDisplayController
+## Geometry
+mono::geo::Point
+mono::geo::Size
+mono::geo::Rect
+mono::geo::Circle
+## Sensors
+mono::sensor::IAccelerometer
+mono::sensor::ITemperature
+mono::power::IPowerManagement

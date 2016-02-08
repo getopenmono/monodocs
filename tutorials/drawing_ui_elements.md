@@ -1,11 +1,7 @@
-# Drawing UI elements
+# Drawing UI Widgets
 
 
 **In this tutorial we will go through the UI elements and how Mono's display system will draw them. We will create a simple application that demonstrates how to use the prefabricated UI elements, and how to respond to their touch events.**
-
-This formula ``$ y=\sum_{i=1}^n g(x_i) $``
-
-[API Reference](api_ref.md)
 
 <!-- Why use it -->
 Mono's display system allows you to easily composite graphical user interfaces. It automatically takes care of drawing in-between display refreshes, and utilizes the touch input system to respond to touch events.
@@ -15,9 +11,4 @@ When you use the existing interface elements for buttons, text and other control
 
 <!-- shape painting and UI elements -->
 
-
-See [The Display System In-Depth Article](display_system_architecture.md)
-
-```eval_rst
-:doc:display_system_architecture.md
-```
+See [the Display System In-Depth Article](../articles/display_system_architecture.md) for more on how the display stack works.

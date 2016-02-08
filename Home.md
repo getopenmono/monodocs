@@ -1,23 +1,20 @@
-<!-- --- title: Developer Documentation : Mono -->
+# Developer Documentation
 
-**Welcome to Mono documention.**
+**Welcome to Mono documentation.**
 
 This is where we will collect all information that is relevant for developing
 on [Mono](http://openmono.com).
 
-[[Architectural Overview|]]
+## Content
 
-### Tutorials
+ * [Gettings Started](getting_started.md)
+ * [Tutorials](tutorials/tutorials.md)
+ * [In-Depth Articles](articles/articles.md)
+ * [API Reference](reference/reference.md)
 
- * [[Drawing UI Elements|drawing_ui_elements]]
+## Implementation status
 
-### In-Depth Articles
-
- * [[Display System Architecture|display_system_architecture]]
-
-### Implementation status
-
-**[[Current Status]]**
+ * **[Current Status](current-status.md)**
 
 ### Framework API Reference
 

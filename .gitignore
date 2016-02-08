@@ -5,3 +5,8 @@ passenger.*.pid*
 _build
 _static
 _templates
+xml
+html
+latex
+single
+reference/*.md

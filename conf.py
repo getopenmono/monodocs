@@ -14,7 +14,10 @@
 
 import sys
 import os
+
+import recommonmark
 from recommonmark.parser import CommonMarkParser
+from recommonmark.transform import AutoStructify
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -31,9 +34,10 @@ from recommonmark.parser import CommonMarkParser
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
+#    'sphinx.ext.intersphinx',
+#    'sphinx.ext.todo',
     'sphinx.ext.mathjax',
+	'breathe',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,12 +56,15 @@ source_suffix = ['.rst', '.md']
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'Home'
 
 # General information about the project.
 project = u'Mono Developer Documentation'
 copyright = u'2016, Monolit ApS'
 author = u'Monolit ApS'
+
+
+github_doc_root = ''
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -112,6 +119,8 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+breathe_projects = { "monoapi": "xml" }
+breathe_default_project = "monoapi"
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -374,3 +383,19 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
+# app setup hook
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+                'url_resolver': lambda url: github_doc_root + url,
+                }, True)
+    print "Adding transform: AutoStructify..."
+    app.add_transform(AutoStructify)
+
+#     app.add_config_value('recommonmark_config', {
+#             'url_resolver': lambda url: github_doc_root + url,
+# #            'auto_toc_tree_section': 'Contents',
+#             'enable_auto_doc_ref' : True,
+#             'enable_eval_rst' : True
+#             }, True)
+#     app.add_transform(AutoStructify)
