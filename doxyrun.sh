@@ -1,5 +1,5 @@
 #!/bin/bash
-DOXYGEN=/Applications/Doxygen.app/Contents/Resources/doxygen
+DOXYGEN=doxygen
 CONFIG_FILE=single
 FILE=$1
 echo "INPUT=$FILE" > $CONFIG_FILE
