@@ -11,9 +11,11 @@ Contents:
 .. toctree::
     :maxdepth: 2
     
-    Home <Home.md>
-
-
+    Getting Started <getting_started.rst>
+    Tutorials <tutorials/tutorials.rst>
+    In-Depth Articles <articles/articles.rst>
+    API Reference <../mono_framework/docs/ui_views.rst>
+    current-status.md
 
 Indices and tables
 ==================
