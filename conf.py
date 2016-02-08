@@ -14,6 +14,9 @@
 
 import sys
 import os, subprocess
+
+curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
+sys.path.insert(0, curr_path)
 from makeapi import BuildApiReference
 
 import recommonmark
