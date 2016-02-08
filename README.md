@@ -1,9 +1,11 @@
 # Mono Docs
 
+[![Documentation Status](https://readthedocs.org/projects/mono-developer-documentation/badge/?version=latest)](http://developer.openmono.com/en/latest/?badge=latest)
+
 This is the source for the site that holds documentation for development
 on [Mono](http://openmono.com).
 
-The [site that displays the documentation](http://developer.kaleidoscope.one)
+The [site that displays the documentation](http://developer.openmono.com)
 is read-only.
 
 To contribute to the documentation itself, submit pull requests against
