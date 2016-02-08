@@ -1,4 +1,4 @@
-<!-- --- title: Architectural Overview : mono -->
+# Architectural Overview
 
 what you will read about here...
 

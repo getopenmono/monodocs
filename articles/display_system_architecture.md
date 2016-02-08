@@ -1,4 +1,4 @@
-<!-- --- title: Display System Architecture -->
+# Display System Architecture
 
 **Mono display system is makes it easy and fast to create graphical user interfaces (GUIs). You can take advantage of the many high-level classes, that display controls or text in the screen.**
 

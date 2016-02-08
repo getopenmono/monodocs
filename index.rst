@@ -9,13 +9,13 @@ Welcome to Mono Developer Documentation's documentation!
 Contents:
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     
     Getting Started <getting_started.rst>
     Tutorials <tutorials/tutorials.rst>
     In-Depth Articles <articles/articles.rst>
     API Reference <../mono_framework/docs/ui_views.rst>
-    current-status.md
+
 
 Indices and tables
 ==================
@@ -24,3 +24,5 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+
+:doc:`/current-status.md`
