@@ -2,3 +2,7 @@
 .otto/
 passenger.*.log
 passenger.*.pid*
+Makefile
+_build
+_static
+_templates

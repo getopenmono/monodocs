@@ -56,3 +56,24 @@ $$\Omega(n^2 \times \text{log}(n))$$
 And now, the end.
 My Friend.
 
+
+# Read the Docs Setup
+
+## Dependencies
+
+To build the docs locally you need the Python Package manager `pip`. On a mac with brew, install python (pip is included). (This will not overwrite the python that is distributed with OS X.)
+
+	$ brew install python
+
+With `brew`'s  python dist installed, install `sphinx` and then `recommonmark` to support markdown:
+
+	$ pip install sphinx
+	$ pip install recommonmark
+
+## Compile the docs
+
+In the project root dir, the `conf.py` file contains the build settings. In the root dir, run:
+
+	$ sphinx-build . _build/
+
+
