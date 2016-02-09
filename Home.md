@@ -1,30 +1,28 @@
-# Developer Documentation
+# Mono Developer Documentation
 
-**Welcome to Mono documentation.**
-
-This is where we will collect all information that is relevant for developing
-on [Mono](http://openmono.com).
+<!-- div class="image" style="position: relative;">
+	<img src="Carousel_4.png" />
+	<h3 style="position: absolute; top: 170px; left: 0; color: #ecf0f1; width: 100%; text-align: center;">
+	Get started developing your Mono app today!</h3>
+</div>
+<br / -->
 
 ## Content
 
- * [Gettings Started](getting-started/getting_started.md)
+ * [Getting Started](getting-started/getting_started.md)
  * [Tutorials](tutorials/tutorials.md)
  * [In-Depth Articles](articles/articles.md)
  * [API Reference](reference/reference.md)
+
 
 ## Implementation status
 
  * **[Current Status](current-status.md)**
 
-### Framework API Reference
-
-When programming Mono, you will eventually need to look into the
-[API Reference](http://developer.openmono.com/reference/latest), to know how to
-interface with the Mono hardware.
 
 ### Contribute
 
 You can contribute to this documentation through the
 [GitHub repository](https://github.com/getopenmono/monodocs).
 Note that everything you contribute will be free for anyone to use because
-it falls under the [[site license|LICENSE.txt]].
+it falls under the [site license](LICENSE.txt).
