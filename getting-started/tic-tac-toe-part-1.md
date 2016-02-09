@@ -361,7 +361,7 @@ void AppController::humanMoved (uint8_t x, uint8_t y)
 
 ## Fallen asleep?
 
-To wrap thing up, I want Mono to start a new game whenever it comes out of a reset or sleep:
+To wrap things up, I want Mono to start a new game whenever it comes out of a reset or sleep:
 
 ```cpp
 void AppController::monoWakeFromReset ()
