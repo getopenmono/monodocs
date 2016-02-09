@@ -7,7 +7,7 @@ on [Mono](http://openmono.com).
 
 ## Content
 
- * [Gettings Started](getting_started.md)
+ * [Gettings Started](getting-started/getting_started.md)
  * [Tutorials](tutorials/tutorials.md)
  * [In-Depth Articles](articles/articles.md)
  * [API Reference](reference/reference.md)
