@@ -6,9 +6,6 @@
 
 In this article we will take an in-depth look at Mono's display system. You should read this if you wish to create your own *User Interface* elements or if you experience issues related to displaying graphics. Also, if you simply would like to know more about how the software works under the hood. I presume you already are familiar with other GUI system programming, like iOS or Qt.
 
-
-[[_TOC_]]
-
 ## Overview
 
 The Mono framework implements a display stack that closely assembles the first computer GUI systems, like the first Mac OS or Atari TOS. It is a single display buffer that your application paints in. The buffer is placed in the display chip, and is therefore not a part of the MCU systems internal RAM. This means writing (and reading) to the display buffer is expensive operations, and should only be done in an efficient way.
