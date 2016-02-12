@@ -1,4 +1,8 @@
-Copyright (c) 2015 Monolit ApS
+# License
+
+**License for the *Mono Developer documentation*:**
+
+Copyright (c) 2016 Monolit ApS
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
