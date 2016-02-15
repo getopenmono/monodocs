@@ -6,6 +6,7 @@ _build
 _static
 _templates
 xml
+mbedxml
 html
 latex
 single

@@ -1,9 +1,9 @@
 # This software is part of OpenMono, see http://developer.openmono.com
 # Released under the MIT license, see LICENSE.txt
 
-def build_api_reference():
-	inputfile = "api_classes.txt"
-	destination = "reference"
+def build_api_reference(inputfile = "api_classes.txt", destination = "reference"):
+	#inputfile = "api_classes.txt"
+	#destination = "reference"
 	file = open(inputfile,"r")
 	classes = file.readlines()
 	file.close()
@@ -35,3 +35,6 @@ def build_api_reference():
 	content.close()
 
 BuildApiReference = build_api_reference
+
+if __name__ == "__main__":
+    BuildApiReference()
