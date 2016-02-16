@@ -5,11 +5,11 @@ In this chapter we shall take a dive into the structure and workings of *Mono Fr
 
  1. [Architectural Overview](architectural-overview.md)
  1. [Display System Architecture](display_system_architecture.md)
+ 1. [Bare Metal C++: A practical Guide](bare_metal_cpp.md)
  
  * Queued callbacks and interrupts
  * Touch System Architecture
  * Wifi & networking
- * Coding C++ for bare metal
  * Boot and Startup procedures
  * Power Management Overview
  * Memory Management: Stack vs heap objects?
