@@ -71,6 +71,7 @@ With `brew`'s  python dist installed, install `sphinx` and then `recommonmark` t
 
 	$ pip install sphinx
 	$ pip install recommonmark
+	$ pip install breathe
 
 ## Compile the docs
 
