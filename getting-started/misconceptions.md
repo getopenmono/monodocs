@@ -38,7 +38,7 @@ Try to do this, and you will find Mono completely unresponsive. The USB port wil
 
 Like other applications in modern platforms, Mono applications uses an internal run loop. If you create your own, the internal run loop will not progress. All features that depend on the run loop will not work. Timers will not run, display system will not work, and worst `monoprog` cannot reset mono, to upload a new app.
 
-If you want to do repetitive tasks, that should run always (like `while(1)`), you should instead utilize the run loop. You can inject jobs into the run loop by implementing a interface called [IRunLoopTask](../reference/mono_IRunLoopTask.md). This will allow you to define a method that gets called on each run loop iteration. That how you do it. We shall not go into more details here, but just refer to the tutorial [Using the Run Loop](../tutorials/using-the-run-loop.md)
+If you want to do repetitive tasks, that should run always (like `while(1)`), you should instead utilize the run loop. You can inject jobs into the run loop by implementing an interface called [IRunLoopTask](../reference/mono_IRunLoopTask.md). This will allow you to define a method that gets called on each run loop iteration. That's how you do it. We shall not go into more details here, but just refer to the tutorial [Using the Run Loop](../tutorials/using-the-run-loop.md)
 
 ### No busy waits
 
@@ -79,13 +79,13 @@ The C++ `new` operator uses the *stdlib* function `malloc` to allocate memory on
 
 ```
 
-What happened to the `bounds` pointer, that had a reference to a [Rect](../reference/mono_geo_Rect.md) object? Nothing happened, the object is still on the heap and we just lost the reference to it. Our application is leaking memory. And that is the first issue with using the heap. We do not have a *Garbage Collector* , so you must be careful to always free your objects on the heap.
+What happened to the `bounds` pointer, that had a reference to a [Rect](../reference/mono_geo_Rect.md) object? Nothing happened, the object is still on the heap and we just lost the reference to it. Our application is leaking memory. And that is one issue with using the heap. We do not have a *Garbage Collector* , so you must be careful to always free your objects on the heap.
 
 And it gets worse, the heap on Mono PSoC5 MCU is not big - it is just 16 Kb. You might run out of heap quicker than you expect. At that point `malloc` will start providing you with `NULL` pointers.
 
 ### Use heap for Asynchronous tasks
 
-There are some cases where you must you the heap, for example this will not work:
+There are some cases where you must use the heap, for example this will not work:
 
 ```cpp
 
@@ -106,7 +106,7 @@ There are some cases where you must you the heap, for example this will not work
 
 Here we have an integer and want to present its value nicely wrapped in a string. It is a pretty common thing to do in applications. The issue here is that display rendering is asynchronous. The call to `renderOnDisplayAsync` will just put our request in a queue, and then return. This means our buffer is removed (deallocated) as soon as the `getTemp()` returns, because it is on the stack.
 
-Then, when its time to render the display there is no longer a `tempStr` around. We could make the string buffe global, but that will take up memory - also when we do not need the string.
+Then, when its time to render the display there is no longer a `tempStr` around. We could make the string buffer object global, but that will take up memory - especially when we do not need the string.
 
 In this case you should the heap! And luckily we made a [String](../reference/mono_String.md) class that does this for you. It store its content on the heap, and keeps track of references to the content. As soon as you discard the last reference to the content, it is automatically freed - no leaks!
 
@@ -117,13 +117,13 @@ The code from above becomes:
 	int celcius = 22; // from the temp. sensor
 	
 	// lets use mono's string class to keep track of our text
-	mono:String tempStr = String::Format("the temperature is: %i C",celcius);
+	mono:String tempStr = mono::String::Format("the temperature is: %i C",celcius);
 	
 	renderOnDisplayAsync(tempStr);
 
 ```
 
-That it. Always use Mono's [String](../reference/mono_String.md) class when handling text strings. It is lightweight, uses data-deduplication and do not leak.
+That's it. Always use Mono's [String](../reference/mono_String.md) class when handling text strings. It is lightweight, uses data de-duplication and do not leak.
 
 *(The method `renderOnDisplayAsync` is not a Mono Framework method, it is just for demonstration.)*
 
@@ -170,10 +170,10 @@ First, let's see some code that only noobs would write:
 	}
 ```
 
-With the `wait_ms()` call, this inetrrupt handler (or ISR) will always take 200 ms to complete. Which is bad. A rule of thumb is that ISR's should be fast. You should avoid doing any real work inside them, least of all do busy waits.
+With the `wait_ms()` call, this interrupt handler (or ISR) will always take 200 ms to complete. Which is bad. A rule of thumb is that ISR's should be fast. You should avoid doing any real work inside them, least of all do busy waits.
 
-Mono Framework is build on top of mbed, that provides classes for H/W Timer interrupt and input triggered interrupts. But because you should never do real work inside interrupt handlers, you normally just set a flag and then check that flag every run loop iteration.
+Mono Framework is build on top of mbed, that provides classes for H/W Timer interrupts and input triggered interrupts. But because you should never do real work inside interrupt handlers, you normally just set a flag and then check that flag every run loop iteration.
 
-We have includes classes that does this for you. We call them *Queued Interrupts*, and we have an in-depth article about the topic: [Queued callbacks and interrupts](../articles/queued-callbacks.md). There are the [QueuedInterrupt](../reference/mono_QueueInterrupt.md) class, that trigger a queued (run loop based) interrupt handler when an input pin changes state. And the [Timer](../reference/mono_Timer.md) class, that provides a queued version of hardware timer interrupts.
+We have includes classes that does all this for you. We call them *Queued Interrupts*, and we have an in-depth article about the topic: [Queued callbacks and interrupts](../articles/queued-callbacks.md). There are the [QueuedInterrupt](../reference/mono_QueueInterrupt.md) class, that trigger a queued (run loop based) interrupt handler when an input pin changes state. And the [Timer](../reference/mono_Timer.md) class, that provides a queued version of hardware timer interrupts.
 
-We stringly encourage you to use the queued versions og timers and interrupts, since you avoid all the issues related real H/W interrupts like: reentrancy, race-conditions, volatile variable, dead-locks and more.
+We strongly encourage you to use the queued versions of timers and interrupts, since you avoid all the issues related to real H/W interrupts like: reentrancy, race-conditions, volatile variable, dead-locks and more.
