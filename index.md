@@ -47,5 +47,6 @@ Haven't you heard the word? Mono is an embedded hardware platform that brings al
 * Accelerometer
 * Temperature Sensor
 * SD Card
+* General Purpose 3.5mm jack connector
 
 On this developer documentation site, you learn how to use all these features through our high-level API.
