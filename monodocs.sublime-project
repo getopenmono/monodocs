@@ -3,6 +3,10 @@
 	[
 		{
 			"path": ".",
+			"folder_exclude_patterns":
+			[
+				".vagrant"
+			],
 			"file_exclude_patterns":
 			[
 				"passenger.*.log",

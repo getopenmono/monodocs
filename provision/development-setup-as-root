@@ -1,8 +1,20 @@
 #!/usr/bin/env bash
 
-echo "--> Installing package build infrastructure"
-apt-get install -y \
-	libicu-dev
+echo "--> Cleaning up package status"
+apt-get update
 
-# TODO: install Passenger so that Gollum is started the same way
-# as in production, that is, reading the config.ru.
+echo "--> Installing Read The Docs infrastructure"
+apt-get install -y \
+	python-dev \
+	python-pip \
+	nginx
+pip install \
+	sphinx \
+	recommonmark \
+	breathe
+
+echo "--> Setting up web server"
+cp /vagrant/provision/nginx.conf /etc/nginx/sites-available/site.conf
+chmod 644 /etc/nginx/sites-available/site.conf
+ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
+service nginx start
