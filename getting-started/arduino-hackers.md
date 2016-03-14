@@ -95,7 +95,7 @@ The complete code added to the project global context and in the `setup()` funct
 
 ```cpp
 
-	mono::ui:TextLabelView textLbl;			        // 1
+	mono::ui::TextLabelView textLbl;			        // 1
 	
 	void setup() {
 		// put your setup code here, to run once:
