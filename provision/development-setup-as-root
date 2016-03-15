@@ -7,7 +7,8 @@ echo "--> Installing Read The Docs infrastructure"
 apt-get install -y \
 	python-dev \
 	python-pip \
-	nginx
+	nginx \
+	doxygen
 pip install \
 	sphinx \
 	recommonmark \
@@ -18,3 +19,6 @@ cp /vagrant/provision/nginx.conf /etc/nginx/sites-available/site.conf
 chmod 644 /etc/nginx/sites-available/site.conf
 ln -s /etc/nginx/sites-available/site.conf /etc/nginx/sites-enabled/site.conf
 service nginx start
+
+echo "--> Setting up virtual-machine info"
+echo "monodocs" > /etc/debian_chroot

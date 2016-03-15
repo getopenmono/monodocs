@@ -1,4 +1,7 @@
-_build/
-.vagrant/
 *.pyc
 *.sublime-workspace
+.vagrant/
+_build/
+reference/
+single
+xml/
