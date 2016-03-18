@@ -5,12 +5,14 @@
 			"path": ".",
 			"folder_exclude_patterns":
 			[
-				".vagrant"
+				".vagrant",
+				"_build",
+				"reference",
+				"single"
 			],
 			"file_exclude_patterns":
 			[
-				"passenger.*.log",
-				"passenger.*.pid*"
+				"*.pyc"
 			]
 		}
 	]

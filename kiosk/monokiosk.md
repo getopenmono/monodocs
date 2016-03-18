@@ -146,4 +146,4 @@ at `kiosk@openmono.com` with the URL of your release (eg.
 and we will do a sanity check of the app and add to the official list
 used by the Kiosk.
 
-
+For GitHub, the url for a release is `https://api.github.com/repos/`:owner`/`:repo`/releases/tags/`:tag

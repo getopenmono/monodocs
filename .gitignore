@@ -1,8 +1,9 @@
-_build/
-.vagrant/
 *.pyc
 *.sublime-workspace
 mbedxml
-xml
-reference
 mbed-reference
+.vagrant/
+_build/
+reference/
+single
+xml/
