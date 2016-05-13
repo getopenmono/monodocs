@@ -19,7 +19,7 @@ The release must contain a file named `app.json` that contains the metadata
 about your app, for example
 
 ```json
-{ "id":"monolit-tictactoe"
+{ "id":"com.openmono.tictactoe"
 , "name":"Tic Tac Toe"
 , "author":"Jens Peter Secher"
 , "authorwebsite":"http://developer.openmono.com"
@@ -55,9 +55,7 @@ In the following, we will describe the format in detail.
 
 #### id
 
-The `id` must be unique within the Kiosk, so you should use
-*organisation*-*appname*, where organisation could just be your name if
-you work on the app by yourself.
+The `id` must be unique within the Kiosk, so you should use [reverse domain name notation](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) like `uk.homebrewers.brewcenter`.
 
 #### name
 

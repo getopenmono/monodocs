@@ -5,14 +5,15 @@ apt-get update
 
 echo "--> Installing Read The Docs infrastructure"
 apt-get install -y \
-	python-dev \
-	python-pip \
+	doxygen \
 	nginx \
-	doxygen
+	python-dev \
+	python-pip
 pip install \
-	sphinx \
+	breathe \
 	recommonmark \
-	breathe
+	sphinx \
+	sphinx_rtd_theme
 
 echo "--> Setting up web server"
 cp /vagrant/provision/nginx.conf /etc/nginx/sites-available/site.conf
