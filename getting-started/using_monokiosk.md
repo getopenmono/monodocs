@@ -10,7 +10,7 @@ But until then, let us focus on the few apps we have in the kiosk right now. In 
 
 ## Visit monokiosk.com
 
-First order of business, direct your favorite browser to **[monokiosk.com](monokiosk.com)**, and you will see this page like this:
+First order of business, direct your favorite browser to **[https://monokiosk.com](monokiosk.com)**, and you will see this page like this:
 
 ![Mono Kiosk landing page](monokiosk1.png "Mono Kiosk landing page")
 
