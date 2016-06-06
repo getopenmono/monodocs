@@ -176,4 +176,6 @@ Mono Framework is build on top of mbed, that provides classes for H/W Timer inte
 
 We have includes classes that does all this for you. We call them *Queued Interrupts*, and we have an in-depth article about the topic: [Queued callbacks and interrupts](../articles/queued-callbacks.md). There are the [QueuedInterrupt](../reference/mono_QueueInterrupt.md) class, that trigger a queued (run loop based) interrupt handler when an input pin changes state. And the [Timer](../reference/mono_Timer.md) class, that provides a queued version of hardware timer interrupts.
 
-We strongly encourage you to use the queued versions of timers and interrupts, since you avoid all the issues related to real H/W interrupts like: reentrancy, race-conditions, volatile variable, dead-locks and more.
+```eval_rst
+.. caution:: We strongly encourage you to use the queued versions of timers and interrupts, since you avoid all the issues related to real H/W interrupts like: reentrancy, race-conditions, volatile variable, dead-locks and more.
+```

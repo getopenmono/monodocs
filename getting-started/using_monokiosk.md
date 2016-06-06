@@ -4,7 +4,9 @@
 
 In this guide we will show you how to download and install a pre-built application on Mono. Monokiosk is the *app store* where you can browse and download mono applications, built by makers from around the world.
 
-> *In this early phase the number of applications on monokiosk is quite limited. We plan to add more applications to the kiosk ourselves, and hope that our community will submit their own creations to the site.*
+```eval_rst
+.. note:: In this early phase the number of applications on monokiosk is quite limited. We plan to add more applications to the kiosk ourselves, and hope that our community will submit their own creations to the site.
+```
 
 But until then, let us focus on the few apps we have in the kiosk right now. In this guide we shall install the *Tic Tac Toe* sample app.
 
@@ -28,7 +30,12 @@ First you must download monoprog itself, so click on *Get Started* in the menu b
 
 Choose the option that fits you or your OS. The downloads are installers that will install *monoprog* on your system.
 
-> Linux users: We have compiled a debian package for you. You need to use the `dpkg` tool to install the package, and then run `apt-get install` to install any dependencies. Non-debian users: You are skilled enough to compile monoprog from [source](https://github.com/getopenmono/monoprog).
+```eval_rst
+.. admonition:: Linux Users:
+
+	We have compiled a debian package for you. You need to use the `dpkg` tool to install the package, and then run `apt-get install` to install any dependencies. Non-debian users: You are skilled enough to compile monoprog from `source <https://github.com/getopenmono/monoprog>`_.
+
+```
 
 ## Download Tic Tac Toe
 
@@ -40,7 +47,9 @@ When you click the link, the file `ttt.elf` will be downloaded to your computer.
 
 ## Transfer the app to Mono
 
-> Since this is the first version of *monoprog*, it is a command line application. We have plan to wrap it inside a nice GUI - but for now bear with us.
+```eval_rst
+.. attention:: Since this is the first version of *monoprog*, it is a command line application. We have plan to wrap it inside a nice GUI - but for now bear with us.
+```
 
 Open a terminal window:
 
@@ -77,7 +86,11 @@ Before monoprog can transfer the application, your Mono must be in bootloader mo
 2. Then push the wire into the reset switch cavity, and hold down the user button on Mono's side. (***Note**: Do not push the wire into the buzzer opening.*)
 3. Release the reset switch first, then release the user button.
 
-Mono is now in bootloader and will stay in bootloader. Do a standard reset to bring Mono out of bootloader. 
+Mono is now in bootloader and will stay in bootloader. Do a standard reset to bring Mono out of bootloader.
+
+```eval_rst
+.. danger:: Do *not* leaves Mono in bootloader! This will drain the battery until power is cut by the under voltage protection circuit. Even with such a circuit, the battery will still suffer from the discharging.
+```
 
 Next, navigate to the directory where you placed the file `ttt.elf`. Then write this *monoprog* command:
 

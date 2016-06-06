@@ -6,6 +6,10 @@
 
 If you wish to understand the concepts and thoughts behind the frameworks structure, this article is for you. Or if you should choose to read only one in-depth article, it should definitely be this one!
 
+```eval_rst
+.. warning:: This is a *draft article*, that is *work in progress*. It still needs some work, therefore you might stumble upon missing words, typos and unclear passages.
+```
+
 ## Overview
 
 *Mono Framework* is a collection of C++ classes, all build on top of the [mbed library](http://developer.mbed.org) created by ARM. The complete Mono software stack consists of 3 levels of abstractions, which are separate libraries:
