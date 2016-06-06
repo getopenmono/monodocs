@@ -89,7 +89,7 @@ Before monoprog can transfer the application, your Mono must be in bootloader mo
 Mono is now in bootloader and will stay in bootloader. Do a standard reset to bring Mono out of bootloader.
 
 ```eval_rst
-.. danger:: Do *not* leaves Mono in bootloader! This will drain the battery until power is cut by the under voltage protection circuit. Even with such a circuit, the battery will still suffer from the discharging.
+.. danger:: Do *not* leave Mono in bootloader! This will drain the battery until power is cut by the under voltage protection circuit. Even with such a circuit, the battery will still suffer from the discharging.
 ```
 
 Next, navigate to the directory where you placed the file `ttt.elf`. Then write this *monoprog* command:
