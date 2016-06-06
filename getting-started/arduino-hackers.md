@@ -1,5 +1,11 @@
 # Mono for Arduino Hackers
 
+---
+
+*** Hi All, unfortunately our Arduino Board package extension is not ready yet. I am working on it! I will post a announcement on [community.openmono.com](https://community.openmono.com) as soon as it is up and running. Please stay tuned.***
+
+---
+
 ***You can use the familiar Arduino IDE to build Mono applications. This guide will take you through the steps.***
 
 ## Prerequisites
