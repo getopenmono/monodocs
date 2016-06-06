@@ -71,6 +71,8 @@ Connect Mono to your computer using a standard microUSB cable.
 
 Before monoprog can transfer the application, your Mono must be in bootloader mode. Mono is in bootloader to 1 sec after reset, but you can force it to stay in bootloader:
 
+![Pushing the Reset switch](reset.jpg)
+
 1. Find a small piece of metal wire to insert into the reset switch hole, on Mono's back. (You can also use a paper clip.)
 2. Then push the wire into the reset switch cavity, and hold down the user button on Mono's side. (***Note**: Do not push the wire into the buzzer opening.*)
 3. Release the reset switch first, then release the user button.
