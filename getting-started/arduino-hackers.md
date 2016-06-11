@@ -3,7 +3,7 @@
 ***You can use the familiar Arduino IDE to build Mono applications. This guide will take you through the steps.***
 
 ```eval_rst
-.. attention:: **Hi All, unfortunately our Arduino Board package extension is not ready yet. I am working on it! I will post a announcement on** `community.openmono.com <https://community.openmono.com>`_ **as soon as it is up and running. Please stay tuned.**
+	.. caution:: **Our Arduino Board package extension is a pre-release. There are still issue with the Serial port and uploading sketches. Some API still needs implementation. If you have issues, please post on** `community.openmono.com <https://community.openmono.com>`_.
 ```
 
 ## Prerequisites
@@ -29,7 +29,7 @@ To make the Board Manager aware of Mono's existence, you must add a source URL t
 In the text field called *Additional Boards Manager URLs* type in the URL for Mono board package:
 
 ```
-https://raw.githubusercontent.com/getopenmono/arduino_comp/master/package_openmono_index.json
+https://github.com/getopenmono/arduino_comp/releases/download/0.8/package_openmono_index.json
 ```
 
 And press *OK*. 
