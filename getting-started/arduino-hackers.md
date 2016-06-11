@@ -20,6 +20,10 @@ Under the hood we still use the native Mono API's and build system, we just enca
 
 The Arduino IDE has a plugin system, where you can add support for third-party boards. We use such a plugin, that adds Mono as a target board. To install the plugin we use the *Board Manager*, that can install new target boards.
 
+```eval_rst
+.. note:: You need Arduino IDE version 1.6 or above to utilize the Board Manager feature. You can download Arduino IDE here: `arduino.cc <https://www.arduino.cc/en/Main/Software>`_
+```
+
 #### Add Mono as a board source
 
 To make the Board Manager aware of Mono's existence, you must add a source URL to the manager. You do this by opening the preferences window in Ardiono IDE. Below is a screenshot of the window:
