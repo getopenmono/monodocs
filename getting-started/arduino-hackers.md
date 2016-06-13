@@ -54,6 +54,18 @@ When the installation is done, you can close the *Board Manager* and return the 
 
 ![Board list with Mono as a target board](arduino_ide_board_list.png)
 
+##### Install the USB Serial Port Driver
+
+If you run Windows, there is an additional step. (Mac users, you can skip this section.) Windows need to detect the Mono hardware as an USB CDC device and create an ol' fashion COM port. So download the USB device definition driver by right clicking the link and choosing *Save file as*:
+
+*[raw.githubusercontent.com/getopenmono/mono_psoc5_library/master/Generated_Source/PSoC5/USBUART_cdc.inf](https://raw.githubusercontent.com/getopenmono/mono_psoc5_library/master/Generated_Source/PSoC5/USBUART_cdc.inf)*
+
+When you connect Mono the *New hardware found...* wizard should appear, and you must direct this wiazrd to search for a driver in the directory where you downloaded the `.inf` file.
+
+```eval_rst
+.. note:: Windows will yell at you because the driver is not signed. Just hold your breath and choose *continue anyway*, to install the driver. We promise it is legit :)
+```
+
 ## Limitations
 
 The standard Arduino boards are much simpler than Mono. For example: They can be turned off and they have bare pin headers. Arduino API are made to make digital and analog communication simple. You have functions like `digitalWrite` and `analogRead`. While you have these function available, you do not have any pin headers sticking out of Mono chassis! You need the *Arduino Shield Adaptor* or to build your own hardware to really take advantage of the Arduino API.
@@ -103,28 +115,26 @@ The complete code added to the project global context and in the `setup()` funct
 
 ```cpp
 
-	mono::ui::TextLabelView textLbl;			        // 1
-	
+	#include <mono.h>     // 1
+    
+	mono::ui::TextLabelView textLbl(mono::geo::Rect(0,20,176,20),"Hi, I'm Mono"); // 2
+    
 	void setup() {
 		// put your setup code here, to run once:
-		
-		mono::geo::Rect txtRect(0,50,176,20);      // 2
-		
-		textLbl.setRect(txtRect);				    // 3
-		
-		textLbl.setText("Hi, I'm Mono");           // 4
-		
-		textLbl.show();							    // 5
+		textLbl.setTextColor(mono::display::WhiteColor);   // 3
+		textLbl.show();   // 4
 	}
+
 ```
 
-I ahve numbered the interesting source code lines, let go through them one by one:
+I have numbered the interesting source code lines, let go through them one by one:
 
-1. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
-2. In the `setup()` function we first create a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(0,50)$`` and dimension ``$(176,20)$``.
-3. We assign the rectangle to the `textLbl` object.
-4. We set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
-5. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
+1. We include the Mono Framework, to have access to Mono's API.
+2. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
+   * In *TextLabelView*'s contructor we create a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(0,50)$`` and dimension ``$(176,20)$``.
+   * In the constructors second parameters we set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
+3. Because the screen on the Arduino template app is black, we need to tell the label to use a *White* text color.
+4. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
 
 Now you can press the compile button (<i class="fa fa-check"></i>) and see the code compiles. If you have Mono connected you can upload the application by pressing the <i class="fa fa-arrow-circle-right"></i> button.
 
@@ -132,18 +142,18 @@ Notice that we did not need to put any code inside the `loop()` function.
 
 ### Enhancing the look and feel
 
-To make our Hello World exactly like the [The obligatory Hello World project](hello_world.md) guide, we need to add some refinements to it. We need to center the text on the screen and to color it a fancy turquoise color. But that easy, just two calls added to the `setup()` function:
+To make our Hello World exactly like the [The obligatory Hello World project](hello_world.md) guide, we need to add some refinements to it. We need to center the text on the screen and to color it a fancy red color. But that easy, just two calls added to the `setup()` function:
 
 ```cpp
 
 	textLbl.setAlignment(mono::ui::TextLabelView::ALIGN_CENTER);
 	
-	textLbl.setTextColor(mono::display::TurquoiseColor);
+	textLbl.setTextColor(mono::display::AlizarinColor);
 ```
 
 Now, if you build and run the application the text will be a fancy color and centered on the screen:
 
-![Hello World Mono app](hello_world_app.png)
+![Hello World Mono app](arduino_hello_world.png)
 
 ## A quick note on namespaces
 
