@@ -31,6 +31,10 @@ First you must download monoprog itself, so click on *Get Started* in the menu b
 Choose the option that fits you or your OS. The downloads are installers that will install *monoprog* on your system.
 
 ```eval_rst
+.. admonition:: Windows 8 and 10 Users:
+
+	We are working on a signed driver package to be a part of the installer, but until then Window 8 and 10 users must disable the driver signing requirement. If the device driver is not installed, Windows will not detect Mono's serial port as a COM device. See Sparkfuns tutorial on `How to Disable Signing Checks <https://learn.sparkfun.com/tutorials/disabling-driver-signature-on-windows-8/disabling-signed-driver-enforcement-on-windows-8>`_
+
 .. admonition:: Linux Users:
 
 	We have compiled a debian package for you. You need to use the `dpkg` tool to install the package, and then run `apt-get install` to install any dependencies. Non-debian users: You are skilled enough to compile monoprog from `source <https://github.com/getopenmono/monoprog>`_.
