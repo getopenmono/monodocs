@@ -68,9 +68,15 @@ When you connect Mono the *New hardware found...* wizard should appear, and you 
 
 ## Limitations
 
-The standard Arduino boards are much simpler than Mono. For example: They can be turned off and they have bare pin headers. Arduino API are made to make digital and analog communication simple. You have functions like `digitalWrite` and `analogRead`. While you have these function available, you do not have any pin headers sticking out of Mono chassis! You need the *Arduino Shield Adaptor* or to build your own hardware to really take advantage of the Arduino API.
+The standard Arduino boards are much simpler than Mono. For example: They can be turned off and they have bare pin headers. Arduino API are made to make digital and analog communication simple. You have functions like `digitalWrite` and `analogRead`. While you have these functions available, you do not have any pin headers sticking out of Mono chassis! You need the *Arduino Shield Adaptor* or to build your own hardware to really take advantage of the Arduino API.
 
 Mono's API is much more high-level, meaning that you have functions like *Render text on the screen*, and the software library (Mono Framework) will handle all the communication for you. Luckily you can still do this from inside the Arduino IDE.
+
+#### Our additions to the default Arduino sketch
+
+There are some key differences between Arduino and Mono, most important the power supply. You can always turn off an Arduino by pulling its power supply, but that is not true for mono. Here power is controlled by software.
+
+By default we have added some code to the Arduino sketch template, so it will power on/off when pressing the User button. Also, we added the text *Arduino* to the display, such that you know your Mono is turned on. We dim the TFT LED backlight, so it will use minimal power.
 
 ## Hello World
 
