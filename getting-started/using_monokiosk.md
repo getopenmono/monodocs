@@ -102,7 +102,11 @@ Next, navigate to the directory where you placed the file `ttt.elf`. Then write 
 $ monoprog -d
 ```
 
-*Monoprog* will now try to find any connected Mono devices. If your device is found it returns: *Mono device detected*. To transfer (program) the app to Mono write:
+*Monoprog* will now try to find any connected Mono devices. If your device is found it returns: *Mono device detected*.
+
+If *monoprog* does not detect any connected Mono device, please check that you see Mono in *Device Manager*, it identifies itself as *PSoC3 Bootloader* HID device. Windows must say that it is *Ready to use*.
+
+To transfer (program) the app to Mono write:
 
 ```
 $ monoprog -p ttt.elf
