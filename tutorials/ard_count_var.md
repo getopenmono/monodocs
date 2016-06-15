@@ -63,3 +63,7 @@ To avoid doing this every time the following example uses an alternative to the 
       }
     }
 ```
+
+```eval_rst
+.. attention:: This example uses a hack to prevent dimmer of the display. This is only a temporary solution, and is not recommended. You should replace any use of the code when we release a best-practice method.
+```
