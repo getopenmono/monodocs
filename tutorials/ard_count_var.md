@@ -43,17 +43,23 @@ To avoid doing this every time the following example uses an alternative to the 
     {
       textLbl.setTextColor(mono::display::WhiteColor); 
       textLbl.show();
+
+      // to prevent the framework from dimming the light
+      CY_SET_REG8( CYREG_PRT5_BYP, 0 );                             // attention: this will affect all pins in port 5
+      CyPins_SetPinDriveMode( CYREG_PRT5_PC1, CY_PINS_DM_STRONG );  // set drivemode to strong for TFT LED backlight
+      CyPins_SetPin( CYREG_PRT5_PC1 );                              // set pin high for TFT LED backlight
+
     }
         
     void loop()
     {
       loopItererations++;
     
-      if( loopItererations >= 2000 )
+      if( loopItererations >= 1000 )
       {
-    loopItererations = 0;
-    counter++;
-    textLbl.setText(mono::String::Format("count: %i", counter));
+        loopItererations = 0;
+        counter++;
+        textLbl.setText(mono::String::Format("count: %i", counter));
       }
     }
 ```
