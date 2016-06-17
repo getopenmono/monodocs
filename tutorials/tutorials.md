@@ -2,7 +2,8 @@
 
 ## Essentials
 
- 1. [Restting Mono](resetting_mono.md)
+ 1. [Resetting Mono](resetting_mono.md)
+ 2. [Using the Serial Port](using-monos-serial-port.md)
 
 
 ## Coding
