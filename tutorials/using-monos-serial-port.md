@@ -85,7 +85,7 @@ AppController::AppController()
 	timer.setInterval(500);
 	
 	// we tell it which function to call when it fires
-	timer.setCallack<AppController>(this, &AppController::outputSomething);
+	timer.setCallback<AppController>(this, &AppController::outputSomething);
 	
 	// set the counter to zero
 	counter = 0;
