@@ -42,3 +42,28 @@ $ monoprog -d
 ```
 
 Monoprog will tell you if it could detect Mono. If it can, it is in bootloader!
+
+## Software Resets
+
+You can programmaticly trigger a reset from code! What happens is the CPU will reset itself if you explicitly tell it to do so. (That it, writing to a specific register.) In Mono Framework there are 3 functions you can use to trigger a reset:
+
+* *Ordinary Reset*, where bootloader runs for 1 sec.
+* *Reset To Application*, where bootloader is skipped.
+* *Reset To Bootloader*, where Mono stays in bootloader.
+
+The 3 functions are static (or class methods) on `IApplicationContext`, and can be used like this:
+
+```cpp
+
+// Ordinary Reset
+mono::IApplicationContext::SoftwareReset();
+
+// Reset to Application
+mono::IApplicationContext::SoftwareResetToApplication();
+
+// Reset to Bootloader
+mono::IApplicationContext::SoftwareResetToBootloader();
+
+```
+
+Note that these functions will never return, since they cause the CPU to reset. So any code beneath the reset functions, will get be reached, just take up memory!
