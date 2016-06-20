@@ -89,6 +89,10 @@ Later in the [Required virtual methods](#required-virtual-methods) section, we s
 
 We expect the POR events to be relatively rare, compared the number of sleep and wake up events. When Mono goes to sleep it turns off all peripherals to minimize power consumption.
 
+```eval_rst
+.. attention:: Due to a software bug in the current release (1.0) of Mono Framework, Mono cannot wake up gracefully from sleep. It gets trapped in an infinite loop. Therefore we have added a reset to the default wake-up routine. So as of release 1.0, Mono will reset at wake-up.
+```
+
 You have the option to handle the *go to sleep* and *wake from sleep* events, as we shall see in the section about the [The AppController](#the-appcontroller). We imagine you might need to do some book-keeping or clean-ups before entering sleep. Likewise, you may need some setup after waking from sleep. If you use the display, you *will* need to take repaint actions when waking from sleep.
 
 However, it you are lazy could could just trigger a *SoftwareReset* upon *wake from sleep*, but you would loose any state that is not serialized.
