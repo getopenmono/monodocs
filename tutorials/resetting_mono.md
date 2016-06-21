@@ -11,8 +11,8 @@ If you just need to trigger a hardware reset, follow these steps:
 ![Reset Mono](../getting-started/reset.jpg "Reset Mono")
 
 1. Find a small tool like a small pen, steel wire or paper clip
-2. Insert the tool into the *reset cavity*, as displayed in the picture above. *Be aware not to insert it into the buzzer opening.*
-3. Push down gently to the toggle the reset switch, and lift up the tool.
+1. Insert the tool into the *reset cavity*, as displayed in the picture above. *Be aware not to insert it into the buzzer opening.*
+1. Push down gently to the toggle the reset switch, and lift up the tool.
 
 Mono will reset. It will load the bootloader that waits for 1 sec, before loading the application programmed in memory.
 
@@ -22,10 +22,9 @@ If you need to install an app from Monokiosk or likewise, it might be nice to fo
 
 To force Mono to stay in bootloader:
 
-1. Gently press and hold the reset switch
-2. Press and hold the User button on Mono's side
-3. Release the reset switch
-4. Release the User button
+1. Press and hold the User button
+1. Gently press and release the reset switch
+1. Release the User button
 
 The *stay in bootloader* mode is only triggered by the pressed User button, then awaking from reset. There are no timeouts. To exit from bootloader, you must do an ordinary hardware reset.
 

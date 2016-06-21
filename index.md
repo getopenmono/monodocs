@@ -8,7 +8,7 @@ Here on our developer site, we will collect all learning resources about mono. Y
 
 *Right now we are in the process of writing the documentation, so you might encounter broken links, typos, bad gramma and a lot of misspellings.*
 
-We prioritize to get as much text published fast, instead of keeping our cards close - and only disclose corporately validated content. We hope you like our desicion. Anyway - should you encounter anything you would like to correct - see: [Contributing](#contribute)
+We prioritize to get as much text published fast, instead of keeping our cards close. We hope you like our desicion. Anyway - should you encounter anything you would like to correct - see: [Contributing](#contribute)
 
 ## Content
 
