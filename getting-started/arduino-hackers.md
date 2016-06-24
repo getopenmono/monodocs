@@ -33,7 +33,7 @@ To make the Board Manager aware of Mono's existence, you must add a source URL t
 In the text field called *Additional Boards Manager URLs* type in the URL for Mono board package:
 
 ```
-https://github.com/getopenmono/arduino_comp/releases/download/0.8/package_openmono_index.json
+https://github.com/getopenmono/arduino_comp/releases/download/current/package_openmono_index.json
 ```
 
 And press *OK*. 
