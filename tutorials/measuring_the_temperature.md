@@ -6,13 +6,13 @@ Mono has a built-in thermometer that is situated on the PCB under the SD Card co
 
 ## Temperature measuring Caveats
 
-Measuring the temperature seems like a simple operation, but you should know that it is actually quite difficult to get it right. First for all, unless you really invert money and time advanced equipment and in calibrating this equipment, then you will not get a precise measurement. But then, what is a precise measurement?
+Measuring the temperature seems like a simple operation, but you should know that it is actually quite difficult to get it right. First for all, unless you really invest money and time in advanced equipment and in calibrating this equipment, then you will not get a precise measurement. But then, what is a precise measurement?
 
 First lets visit the terms: absolute and relative measurements. An absolute temperature measurement is a temperature measured againts a fixed global reference. At the summer the sea temperature at the beaches reach \\\(25 ^{\circ}C\\\) or \\\(77 ^{\circ}F\\\). This is an absolute measurement. In contrast if I say: The sea temperature has rised by \\\(2 ^{\circ}C\\\) or \\\(3,5 ^{\circ}F\\\), rise in temperature is a reltive measurement.
 
 When measuring temperature you should know that absolute measurements are hard, and relative measurements are easy in comparison. Normal household thermometers do not achieve a precision below \\\(1 ^{\circ}C\\\) or \\\(1.8 ^{\circ}F\\\), in absolute measurements. But their relative precision can be far better - like \\\(0.1 ^{\circ}C\\\) or \\\(0.18 ^{\circ}F\\\).
 
-Mono's built-in thermometer share the same characteristics. However, be aware the thermometer is mounted on the PCB which get heated by the CPU and battery. You are measuring the temperature of the PCB - not the air temperature. To overcome this you can put mno in sleep mode for some time, and then wake up and measure the temperature. When Mono is in sleep, the PCB will (over time) get the same temperature as the air around it.
+Mono's built-in thermometer share the same characteristics. However, be aware that the thermometer is mounted on the PCB which get heated by the electronic inside the device. You are measuring the temperature of the PCB - not the air temperature. To overcome this you can put mono in sleep mode for some time, and then wake up and measure the temperature. When Mono is in sleep, the PCB will (over time) get the same temperature as the air around it.
 
 ## Example
 
