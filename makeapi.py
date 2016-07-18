@@ -11,6 +11,7 @@ def build_api_reference(inputfile = "api_classes.txt", destination = "reference"
 
 	titlePrefix = "# "
 	blockPrefix = "```eval_rst\n.. doxygenclass:: "
+	blockPrefixStruct = "```eval_rst\n.. doxygenstruct:: "
 	blockPostfix = "   :project: monoapi\n   :path: xml\n   :members:\n   :protected-members:\n```"
 
 	content = open(destination+"/reference.md","w")
@@ -22,13 +23,19 @@ def build_api_reference(inputfile = "api_classes.txt", destination = "reference"
 			content.write("\n"+c)
 			continue
 
-		fileName = c.replace("::","_").replace("\n","")+".md"
-		print "Writing class: "+fileName
+		fileName = c.replace("::","_").replace("\n","").replace(" ","").replace("#struct","")+".md"
+		prefix = blockPrefix
+		if c.replace("\n","").endswith("#struct"):
+			print "Writing struct: "+fileName
+			prefix = blockPrefixStruct
+		else:
+			print "Writing class: "+fileName
+		
 		nameList = c.split("::")
-		baseName = nameList[len(nameList)-1]
+		baseName = nameList[len(nameList)-1].replace(" ","").replace("#struct","")
 		f = open(destination+"/"+fileName,"w")
 		f.write(titlePrefix+baseName+"\n\n")
-		f.write(blockPrefix+c)
+		f.write(prefix+c.replace(" ","").replace("#struct",""))
 		f.write(blockPostfix)
 		f.close()
 		content.write(" * ["+baseName.replace("\n","")+"]("+fileName+")\n")
