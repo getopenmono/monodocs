@@ -84,7 +84,7 @@ release = u'alpha'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -392,7 +392,7 @@ def run_doxygen(folder):
 	"""Run the doxygen make command in the designated folder"""
 
 	try:
-		retcode = subprocess.call("cd %s; bash doxyrun.sh mono_framework" % folder, shell=True)
+		retcode = subprocess.call("cd %s; bash doxyrun.sh mono_framework doxygen" % folder, shell=True)
 		if retcode < 0:
 			sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 	except OSError as e:
