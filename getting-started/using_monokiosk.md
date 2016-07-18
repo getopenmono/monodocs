@@ -80,23 +80,7 @@ Options:
 
 If you see a message similar to this one, then everything is awesome! If your console brags about unknown command or application, then please run the installer again.
 
-Connect Mono to your computer using a standard microUSB cable.
-
-Before monoprog can transfer the application, your Mono must be in bootloader mode. Mono is in bootloader to 1 sec after reset, but you can force it to stay in bootloader:
-
-![Pushing the Reset switch](reset.jpg)
-
-1. Find a small piece of metal wire to insert into the reset switch hole, on Mono's back. (You can also use a paper clip.)
-2. Then push the wire into the reset switch cavity, and hold down the user button on Mono's side. (***Note**: Do not push the wire into the buzzer opening.*)
-3. Release the reset switch first, then release the user button.
-
-Mono is now in bootloader and will stay in bootloader. Do a standard reset to bring Mono out of bootloader.
-
-```eval_rst
-.. danger:: Do *not* leave Mono in bootloader! This will drain the battery until power is cut by the under voltage protection circuit. Even with such a circuit, the battery will still suffer from the discharging.
-```
-
-Next, navigate to the directory where you placed the file `ttt.elf`. Then write this *monoprog* command:
+Connect Mono to your computer using a standard microUSB cable. Then, (from the terminal) navigate to the directory where you placed the file `ttt.elf`. Then write this *monoprog* command:
 
 ```
 $ monoprog -d
@@ -104,7 +88,9 @@ $ monoprog -d
 
 *Monoprog* will now try to find any connected Mono devices. If your device is found it returns: *Mono device detected*.
 
-If *monoprog* does not detect any connected Mono device, please check that you see Mono in *Device Manager*, it identifies itself as *PSoC3 Bootloader* HID device. Windows must say that it is *Ready to use*.
+```eval_rst
+.. note:: If *monoprog* does not detect any connected Mono device, please force Mono into bootloader with help from  `this guide <../tutorials/resetting_mono.html#force-load-bootloader>`_. 
+```
 
 To transfer (program) the app to Mono write:
 
