@@ -16,11 +16,9 @@ The SDK predefines the behaviour of the *User button*, to toggle sleep mode. Thi
 
 ## Sleep and USB
 
-The current implementation of the USB stack on Mono will wake Mono from sleep. This means that Mono cannot stay in sleep mode if it is connected to a computer. Therefore, to test sleep mode you need to unplug it from the USB Host, before you trigger sleep mode.
+In our *v1.1* release of our SDK, we enabled sleep mode while connected to the USB. This means that triggering sleep will power-down Mono's USB port. THerefore our computer will loose connection to Mono if it goes to sleep.
 
-If you plug in Mono's USB while it is in sleep, it will wake up when the computer (USB Host) enumerates it. If you plug it in to a power-only USB tough, it will not wake up.
-
-Bottom line: **Unplug the USB connection if you wish to use sleep mode!**
+When you wake up Mono, it will be enumerated once again.
 
 ## Triggering sleep mode
 
