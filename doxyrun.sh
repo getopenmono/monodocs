@@ -1,5 +1,5 @@
 #!/bin/bash
-DOXYGEN=$2
+DOXYGEN=${2:-doxygen}
 CONFIG_FILE=single
 FILE=$1
 echo "INPUT=$FILE" > $CONFIG_FILE
