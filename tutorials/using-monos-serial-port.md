@@ -132,7 +132,7 @@ I can count to: 6
 Because Mono does not wait for you to open the serial port, you might loose some output. That is why you properly will not see *I can count to 0* and *I can count to 1*. At some point we might change this behaviour and add a larger output buffer on Mono.
 
 ```eval_rst
-.. attention:: Currently the serial API in the Mono's SDK support only writing. This means you can only transfer data from Mono to your serial terminal. On the next SDK release we will implement receiving data as well.
+.. Note:: You can also read from the serial port using the standard ``getc`` *stdio* function. Avoid using ``scanf`` since this will block until the formatted input has been read from the serial port.
 ```
 
 ## Reconnects and Resets
@@ -162,8 +162,4 @@ You have effectively cut off the possibility of resetting using the DTR, to trig
 
 ## Serial Port Windows Driver
 
-Windows do not support mapping USB CDC devices to Serial ports (COM devices) out of the box. It needs an `.inf` file to tell it to do so. You can download this [INF file here](https://raw.githubusercontent.com/getopenmono/mono_psoc5_library/master/Generated_Source/PSoC5/USBUART_cdc.inf), but it should have been installed automatically. The driver is included in both the [Monokiosk based installer](https://monokiosk.com/get-started) and the [SDK toolchain](http://developer.openmono.com/en/latest/getting-started/install.html).
-
-```eval_rst
-.. attention:: Windows 8 and Windows 10 users will not have the driver installed automatically! These versions of Windows allows only signed drivers to be installed. We have yet to obtain our code signing certificate. In the mean time you can disable this check, by following `this guide <https://learn.sparkfun.com/tutorials/disabling-driver-signature-on-windows-8/disabling-signed-driver-enforcement-on-windows-8>`_.
-```
+Windows do not support mapping USB CDC devices to Serial ports (COM devices) out of the box. It needs an `.inf` file to tell it to do so. You can download an installer for this [INF file here](https://github.com/getopenmono/arduino_comp/releases/download/1.1/OpenMonoSerialDriverSetup-v1.0.exe), but it should have been installed automatically. The driver is included in both the [Monokiosk based installer](https://monokiosk.com/get-started) and the [SDK toolchain](http://developer.openmono.com/en/latest/getting-started/install.html).
