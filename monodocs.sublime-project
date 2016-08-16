@@ -1,19 +1,15 @@
-{
-	"folders":
-	[
-		{
-			"path": ".",
-			"folder_exclude_patterns":
-			[
-				".vagrant",
-				"_build",
-				"reference",
-				"single"
-			],
-			"file_exclude_patterns":
-			[
-				"*.pyc"
-			]
-		}
-	]
+{ "folders":
+  [ { "path": "."
+    , "folder_exclude_patterns":
+      [ ".vagrant"
+      , "_build"
+      , "reference"
+      , "single"
+      , "xml"
+      ]
+    , "file_exclude_patterns":
+      [ "*.pyc"
+      ]
+    }
+  ]
 }

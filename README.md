@@ -2,8 +2,8 @@
 
 [![Documentation Status](https://readthedocs.org/projects/mono-developer-documentation/badge/?version=latest)](http://developer.openmono.com/en/latest/?badge=latest)
 
-This is the source for the site that holds documentation for development
-on [Mono](http://openmono.com).
+This is the source for the site that holds documentation for developers
+of [Mono](http://openmono.com) software and hardware.
 
 The [site that displays the documentation](http://developer.openmono.com)
 is read-only.
@@ -11,7 +11,7 @@ is read-only.
 To contribute to the documentation itself, submit pull requests against
 [the GitHub repository](https://github.com/getopenmono/monodocs).
 
-## Development
+## Local setup using virtual machine
 
 You will need [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/) installed.
 
@@ -38,7 +38,7 @@ When the virtual machine has been set up, you only need to run one or more of th
 	$ ./makeapi.py
 	$ sphinx-build . _build/
 
-## Manual setup
+## Local manual setup
 
 To build the docs locally you need the Python Package manager `pip`. On a mac with brew, install python (pip is included). (This will not overwrite the python that is distributed with OS X.)
 
@@ -56,3 +56,6 @@ In the project root dir, the `conf.py` file contains the build settings. In the 
 
 	$ sphinx-build . _build/
 
+## Releasing new versions
+
+When you are satisfied with your local changes, simply commit to branch master, and the new version will be generated on Read The Docs.

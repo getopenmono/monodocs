@@ -15,6 +15,7 @@ We prioritize to get as much text published fast, instead of keeping our cards c
  * [Getting Started](getting-started/getting_started.md)
  * [Tutorials](tutorials/tutorials.md)
  * [In-Depth Articles](articles/articles.md)
+ * [Schematics](schematics/index.md)
  * [Integrating with MonoKiosk](kiosk/monokiosk.md)
  * [API Reference](reference/reference.md)
 

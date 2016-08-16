@@ -16,15 +16,15 @@
  <!-- 1. Using the 3.5mm jack connector -->
 
 ### Quick Examples
- 
+
  1. [Arduino: On-screen Counter](ard_count_var.md)
  1. [Adding a Button to the Screen](adding_a_button_to_the_sceen.md)
  1. [Periodically call a Function](periodicly_call_a_function.md)
- 
+
  <!--
  1. [Measuring the Temperature](measuring_the_temperature.md)
  -->
- 
+
  <!--
  1. Using the Buzzer
  1. Getting the Temperature
@@ -36,5 +36,4 @@
  1. Triggering software resets
 -->
 
- 
- 
+
