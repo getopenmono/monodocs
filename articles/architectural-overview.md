@@ -76,8 +76,8 @@ The term *Power On Reset* or *POR* means the initial reset that occurs when the 
 
 A POR can be triggered in a number of different ways:
 
- * Pressing mono reset button
- * If Mono's battery is completely drained, the power control subsystem will cut the CPU's supply. When Mono is charged, the power to the CPU will be restored and a POR happens.
+ * Pressing Mono's reset button
+ * If Mono's battery is drained, the power control software will halt the CPU's. When Mono is charged, the system will wake the CPU and a software triggered POR happens.
  * Uploading a new application to Mono, using `monoprog`.
  * Your application can trigger a *SoftwareReset*, that results in a POR.
 
@@ -87,13 +87,9 @@ Later in the [Required virtual methods](#required-virtual-methods) section, we s
 
 #### Sleep and Wake-up
 
-We expect the POR events to be relatively rare, compared the number of sleep and wake up events. When Mono goes to sleep it turns off all peripherals to minimize power consumption.
+When Mono goes to *sleep mode* it turns off all peripherals to minimize power consumption.
 
-```eval_rst
-.. attention:: Due to a software bug in the current release (1.0) of Mono Framework, Mono cannot wake up gracefully from sleep. It gets trapped in an infinite loop. Therefore we have added a reset to the default wake-up routine. So as of release 1.0, Mono will reset at wake-up.
-```
-
-You have the option to handle the *go to sleep* and *wake from sleep* events, as we shall see in the section about the [The AppController](#the-appcontroller). We imagine you might need to do some book-keeping or clean-ups before entering sleep. Likewise, you may need some setup after waking from sleep. If you use the display, you *will* need to take repaint actions when waking from sleep.
+You have the option to handle the *go to sleep* and *wake from sleep* events, as we shall see in the section about the [The AppController](#the-appcontroller). We imagine you might need to do some book-keeping or I/O flushing before entering sleep. Likewise, you may need some setup after waking from sleep. If you use the display, you *will* need to take repaint actions when waking from sleep.
 
 However, it you are lazy could could just trigger a *SoftwareReset* upon *wake from sleep*, but you would loose any state that is not serialized.
 
@@ -119,7 +115,7 @@ However, it you are lazy could could just trigger a *SoftwareReset* upon *wake f
 
 ### The run loop
 
-Like most modern application runtimes, Mono has an internal run loop. The loop handles periodic tasks, like sampling the touch system, updating the display, processing Timers and handling any other asynchronous task. You can inject your own tasks into the run loop, and there by achieve the Arduino-like `loop()` functionality.
+Like most modern application runtimes, Mono has an internal *run loop* (also called an *event loop*). The loop handles periodic tasks, like sampling the touch system, updating the display, processing Timers and handling any other asynchronous task. You can inject your own tasks into the run loop, and there by achieve the Arduino-like `loop()` functionality.
 
 The run loop is started right after your POR handler returns, and runs for the entire length of the application lifecycle.
 
@@ -156,20 +152,27 @@ Notice the syntax here. We use C++ templates and function pointers. Reason is th
 
 	void MyFunction() {}
 
-	setCallback(&MyFunction);
+	mono::Timer::callOnce(5000, &MyFunction);
 ```
 
+C functions has no context (do not belong to a class), and can be identified by a pointer. Functions (*methods* to be precise) in C++ exists as attributes on object instances. When we use these as callback handlers, we need to define 3 parameters:
 
-* we have callback functions for C++
-* beside C function pointers, you can use C++ member pointers (type info is preserved!)
+1. The type of class where the *method* is defined
+2. Provide a pointer to an instance of the class (the *object*)
+3. Provide the actual function (*method*) pointer
 
+```eval_rst
+.. note:: That we can have callback methods in old C++98 is a kind of hack. In more modern C++ version, *lambda functions* achieve the same - but less verbose. Unfortunately Mono do not have enough memory to contain the runtime libraries for either C++11 or C++14. 
+```
 
-##### Events
+```eval_rst
+.. ##### Events
 
-* most apps a events based, they change state on events
-* events are touch input, power/sleep triggers or button interrupts
-* events are handled in callback functions and member method overrides
-* a todo list app changes state on touch events, between events it does nothing
+	* most apps a events based, they change state on events
+	* events are touch input, power/sleep triggers or button interrupts
+	* events are handled in callback functions and member method overrides
+	* a todo list app changes state on touch events, between events it does nothing
+```
 
 ##### Timers
 
