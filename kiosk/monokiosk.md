@@ -79,7 +79,7 @@ following licenses:
 - [LGPL](http://www.gnu.org/licenses/lgpl-3.0.html)
 
 If you feel that you need another license supported, take it up in the
-[forum](http://forum.openmono.com).
+[community](http://community.openmono.com).
 
 #### headline
 

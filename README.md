@@ -58,4 +58,4 @@ In the project root dir, the `conf.py` file contains the build settings. In the 
 
 ## Releasing new versions
 
-When you are satisfied with your local changes, simply commit to branch master, and the new version will be generated on Read The Docs.
+When you are satisfied with your local changes, commit to branch master.  Then go to the [specific project page on Read The Docs](https://readthedocs.org/projects/mono-developer-documentation/) and build a new version.
