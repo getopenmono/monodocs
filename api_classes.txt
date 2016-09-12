@@ -21,8 +21,9 @@ mono::ui::TextLabelView
 mono::ui::ButtonView
 mono::ui::ProgressBarView
 mono::ui::StatusIndicatorView
-mono::ui::ConsoleView
+mono::ui::BackgroundView
 mono::ui::ImageView
+mono::ui::ConsoleView
 mono::ui::GraphView
 mono::ui::IGraphViewDataSource
 mono::ui::TouchCalibrator
