@@ -30,7 +30,7 @@ def build_api_reference(inputfile = "api_classes.txt", destination = "reference"
 			prefix = blockPrefixStruct
 		else:
 			print "Writing class: "+fileName
-		
+
 		nameList = c.split("::")
 		baseName = nameList[len(nameList)-1].replace(" ","").replace("#struct","")
 		f = open(destination+"/"+fileName,"w")

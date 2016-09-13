@@ -32,11 +32,13 @@ Inside the virtual machine, generate the documentation and restart the web serve
 
 Now the documentation site is running at `localhost:8080`.
 
-When the virtual machine has been set up, you only need to run one or more of the generating steps to get the web site updated:
+When the virtual machine is up and running, you only need to run one or more of the generating steps to get the web site updated:
 
 	$ ./doxyrun.sh /mono_framework
 	$ ./makeapi.py
 	$ sphinx-build . _build/
+
+And you can again check the changes on `localhost:8080`.
 
 ## Local manual setup
 

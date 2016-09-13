@@ -9,9 +9,9 @@ First we begin with downloading the installer package, that will install the fra
 <table class="table wy-text-center" style="width: 100%;">
 <tr><th>Windows</th><th>Mac</th><th>Linux (Debian)</th></tr>
 <tr>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/1.1/OpenMonoSetup-v1.1.4.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a> </td>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/1.1/OpenMono-v1.1.3-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/tag/1.1" class="btn btn-neutral" target="_blank"><span class="fa fa-download"></span> Download</a></td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_2/OpenMonoSetup-v1.2.1.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a> </td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_2/OpenMono-v1.2-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/tag/SDKv1_2" class="btn btn-neutral" target="_blank"><span class="fa fa-download"></span> Download</a></td>
 </tr>
 </table>
 <br/>
@@ -25,9 +25,9 @@ The installer contains all you need to install apps on mono, and to develop your
  * **Binutils** (Windows only): The `make` tool
  * **monoprog**: Tool that uploads apps to Mono via USB
  * **monomake**: Tool that creates new mono application projects for you
- 
+
 ## Check installation
- 
+
 When the installer package has finished, you should check that have the toolchain installed. Open a terminal:
 
 ### Mac & Linux
@@ -36,7 +36,7 @@ Open the *Terminal* application, and type this into it:
 
 ```
 	$ monomake
-``` 
+```
 
 If you have installed the toolchain successfully in your path, the `monomake` tool should respond this:
 

@@ -1,4 +1,6 @@
-# Scematics
+# Schematics
+
+If you need more specific schematics than what is shown here, just ask.
 
 ## Mono
 

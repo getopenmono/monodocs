@@ -1,47 +1,47 @@
 ## Core Classes
+mono::AppRunLoop
+mono::DateTime
+mono::GenericQueue
 mono::IApplication
 mono::IApplicationContext
-mono::AppRunLoop
 mono::IRunLoopTask
+mono::ITouchSystem
+mono::ManagedPointer
+mono::Queue
+mono::QueueInterrupt
+mono::Regex
 mono::String
 mono::Timer
-mono::DateTime
-mono::ISettings
-mono::QueueInterrupt
-mono::TouchResponder
 mono::TouchEvent
-mono::ITouchSystem
-mono::Regex
-mono::Queue
-mono::GenericQueue
-mono::ManagedPointer
+mono::TouchResponder
 ## UI Widgets
-mono::ui::View
-mono::ui::TextLabelView
 mono::ui::ButtonView
-mono::ui::ProgressBarView
-mono::ui::StatusIndicatorView
 mono::ui::ConsoleView
-mono::ui::ImageView
 mono::ui::GraphView
 mono::ui::IGraphViewDataSource
-mono::ui::TouchCalibrator
+mono::ui::ImageView
+mono::ui::ISettings
+mono::ui::ProgressBarView
 mono::ui::ResponderView
+mono::ui::StatusIndicatorView
+mono::ui::TextLabelView
+mono::ui::TouchCalibrator
+mono::ui::View
 ## Drawing
-mono::display::DisplayPainter
 mono::display::Color
+mono::display::DisplayPainter
 mono::display::IDisplayController
 mono::display::TextRender
 MonoFont #struct
 ## Geometry
-mono::geo::Point
-mono::geo::Size
-mono::geo::Rect
 mono::geo::Circle
+mono::geo::Point
+mono::geo::Rect
+mono::geo::Size
 ## Sensors
 mono::sensor::IAccelerometer
-mono::sensor::ITemperature
 mono::sensor::IBuzzer
+mono::sensor::ITemperature
 ## Power
 mono::power::IPowerManagement
 mono::power::IPowerSubSystem
