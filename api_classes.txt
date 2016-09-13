@@ -15,6 +15,7 @@ mono::Timer
 mono::TouchEvent
 mono::TouchResponder
 ## UI Widgets
+mono::ui::BackgroundView
 mono::ui::ButtonView
 mono::ui::ConsoleView
 mono::ui::GraphView
