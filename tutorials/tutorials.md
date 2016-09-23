@@ -10,6 +10,7 @@
 ## Coding
 
  1. [Using the Network](using_the_network.md)
+ 1. [Using file I/O](using_file_io.md)
  <!-- 1. [Drawing UI Widgets](drawing_ui_elements.md) -->
 
 
@@ -24,7 +25,6 @@
 
  <!--
  1. Using the Buzzer
- 1. Getting the Temperature
  1. Using the Accelerometer
  1. Using the RTC
  1. Adjusting the display brightness
