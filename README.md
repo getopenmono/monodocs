@@ -25,7 +25,7 @@ Then you need to build and get into the virtual machine:
 Inside the virtual machine, generate the documentation and restart the web server.
 
 	$ cd /vagrant
-	$ ./doxyrun.sh /mono_framework
+	$ ./doxyrun.sh /mono_framework/src
 	$ ./makeapi.py
 	$ sphinx-build . _build/
 	$ sudo service nginx restart
@@ -34,7 +34,7 @@ Now the documentation site is running at `localhost:8080`.
 
 When the virtual machine is up and running, you only need to run one or more of the generating steps to get the web site updated:
 
-	$ ./doxyrun.sh /mono_framework
+	$ ./doxyrun.sh /mono_framework/src
 	$ ./makeapi.py
 	$ sphinx-build . _build/
 
