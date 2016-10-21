@@ -75,7 +75,7 @@ github_doc_root = ''
 # built documents.
 #
 # The short X.Y version.
-version = u'1.0'
+version = u'1.3'
 # The full version, including alpha/beta/rc tags.
 release = u'alpha'
 
@@ -392,7 +392,7 @@ def run_doxygen(folder):
 	"""Run the doxygen make command in the designated folder"""
 
 	try:
-		retcode = subprocess.call("cd %s; bash doxyrun.sh mono_framework doxygen" % folder, shell=True)
+		retcode = subprocess.call("cd %s; bash doxyrun.sh mono_framework/src doxygen" % folder, shell=True)
 		if retcode < 0:
 			sys.stderr.write("doxygen terminated by signal %s" % (-retcode))
 	except OSError as e:
