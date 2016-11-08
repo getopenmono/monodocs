@@ -22,13 +22,12 @@
  1. [Adding a Button to the Screen](adding_a_button_to_the_sceen.md)
  1. [Periodically call a Function](periodicly_call_a_function.md)
  1. [Measuring the Temperature](measuring_the_temperature.md)
+ 1. [Using the Buzzer](using_the_buzzer.md)
 
  <!--
- 1. Using the Buzzer
  1. Using the Accelerometer
  1. Using the RTC
  1. Adjusting the display brightness
- 1. SD card and file I/O
  1. Utilizing the run-loop
  1. Triggering software resets
 -->
