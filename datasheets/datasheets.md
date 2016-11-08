@@ -2,7 +2,7 @@
 
 **If you need to dive a little deeper into the inner workings of Mono, we have collected the datasheets for the components in Mono**
 
-You might need consult specific datasheets for the components in Mono, if you are debugging or just need some advanced features not provided by the API.
+You might need to consult specific datasheets for the components in Mono, if you are debugging or just need some advanced features not provided by the API.
 
 ## Accelerometer
 
@@ -16,8 +16,9 @@ Mono's accelerometer is a *MMA8652FC* chip by Freescale. It is connected to Mono
 		<td><a href="https://github.com/getopenmono/monodocs/raw/master/datasheets/MMA8652FC.pdf" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
 	</tr>
 </table>
+<br/>
 
-The accelerometer is handled by the [`MonoAccelerometer`](//github.com/getopenmono/mono_framework/blob/master/src/mono_accelerometer.h) class in the software framework. If you need specific features, or just wish to play with the component directly, you should consult the datasheet.
+The accelerometer is handled by the [`MonoAccelerometer`](https://github.com/getopenmono/mono_framework/blob/master/src/mono_accelerometer.h) class in the software framework. If you need specific features, or just wish to play with the component directly, you should consult the datasheet.
 
 ## MCU
 
@@ -32,11 +33,12 @@ The MCU model we use has 64 Kb SRAM, 256 Kb Flash RAM and runs at 66 Mhz.
 		</td>
 	</tr>
 	<tr>
-		<td><a href="http://www.cypress.com/file/123561/download" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
+		<td><a href="http://www.cypress.com/file/123561/download" target="_blank" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
 	</tr>
 </table>
+<br/>
 
-The software framework encapsulates most MCU features in the *mbed* layer, such as GPIO, interrupts and timers. Also power modes is controlled by the registers in the MCU and utilized insode the [`PowerManagement`](//github.com/getopenmono/mono_framework/blob/master/src/mono_power_management.h) class.
+The software framework encapsulates most MCU features in the *mbed* layer, such as GPIO, interrupts and timers. Power modes is also controlled by the registers in the MCU and utilized by the [`PowerManagement`](https://github.com/getopenmono/mono_framework/blob/master/src/mono_power_management.h) class.
 
 ## Display Chip
 
@@ -50,12 +52,13 @@ The display is driven by an *ILITEK 9225G* chip. On mono we have hardwired the i
 		<td><a href="https://github.com/getopenmono/monodocs/raw/master/datasheets/ILI9225G_DS_V0_06_20110228.pdf" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
 	</tr>
 </table>
+<br/>
 
 In the framework the display controller class [`ILI9225G`](https://github.com/getopenmono/mono_framework/blob/master/src/display/ili9225g/ili9225g.h) utilizes the communication and pixel blitting to the display chip. 
 
 ## Wireless
 
-Mono uses the Redpine Wifi chip to achieve wireless communication. (The redpine includes Bluetooth for the Maker model, also.) The chip is connect via a dedicated SPI interface, and has a interrupt line connected as well.
+Mono uses the Redpine Wifi chip to achieve wireless communication. (The same chip includes Bluetooth for the Maker model, also.) The chip is connected via a dedicated SPI interface, and has a interrupt line connected as well.
 
 <table class="table wy-text-center">
 	<tr>
@@ -65,6 +68,7 @@ Mono uses the Redpine Wifi chip to achieve wireless communication. (The redpine 
 		<td><a href="https://github.com/getopenmono/monodocs/raw/master/datasheets/RS9113-WiseConnect-Software-PRM-v1.5.0.pdf" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
 	</tr>
 </table>
+<br/>
 
 The communication interface is quite advanced, including many data package layers. You can find our implementation of the communication in the [`ModuleSPICommunication`](https://github.com/getopenmono/mono_framework/blob/master/src/wireless/module_communication.h#L275) class. This class utilizes the SPI communication from and to the module, it does not know anything about the semantics of the commands sent.
 
@@ -80,5 +84,6 @@ The temperature sensor is an Amtel *AT30TS74* chip, connected via the internal I
 		<td><a href="https://github.com/getopenmono/monodocs/raw/master/datasheets/Atmel-8897-DTS-AT30TS74-Datasheet.pdf" class="btn btn-neutral"><span class="fa fa-download">Download PDF</span></a></td>
 	</tr>
 </table>
+<br/>
 
 The temperature interface is used in the [`AT30TS74Temperature`](https://github.com/getopenmono/mono_framework/blob/master/src/at30ts74_temperature.h) class.

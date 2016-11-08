@@ -17,6 +17,7 @@ We prioritize to get as much text published fast, instead of keeping our cards c
  * [In-Depth Articles](articles/articles.md)
  * [Schematics](schematics/index.md)
  * [Integrating with MonoKiosk](kiosk/monokiosk.md)
+ * [Datasheets](datasheets/datasheets.md)
  * [API Reference](reference/reference.md)
 
 
