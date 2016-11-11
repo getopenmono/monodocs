@@ -14,6 +14,10 @@
  1. [Creating Custom Views](custom_views.md)
  <!-- 1. [Drawing UI Widgets](drawing_ui_elements.md) -->
 
+### Humidty app
+
+ 1. [Humidity, jack & sensor](humidity-hardware.md)
+ 1. [Humidity, software](humidity-software.md)
 
  <!-- 1. Using the 3.5mm jack connector -->
 
