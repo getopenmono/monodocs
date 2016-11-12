@@ -60,6 +60,9 @@ Therefore we extend the class members with:
     	
     	// The http client object variable
     	network::HttpClient client; 
+    	
+    	// a console view to display html data
+    	mono::ui::ConsoleView<176, 110> console;
     
 	public:
     
@@ -82,7 +85,7 @@ First we need to add the raw *mbed* SPI object to the *AppController*'s construc
 	
 	// You should init data here, since I/O is not setup yet.
 	AppController::AppController() :
-    	helloLabel(Rect(0,100,176,20), "Hi, I'm Mono!"),
+    	helloLabel(Rect(0,150,176,20), "Hi, I'm Mono!"),
     	spi(RP_SPI_MOSI, RP_SPI_MISO, RP_SPI_CLK),
     	spiComm(spi, NC, RP_nRESET, RP_INTERRUPT)
 	{
@@ -100,6 +103,9 @@ The first thing we wanna do is tell the module to boot up and begin listening fo
 	{
 		//initialize the wifi module
 		redpine::Module::initialize(&spiComm);
+		
+		//show the console view
+		console.show();
 
 ```
 
@@ -112,6 +118,9 @@ Let us begin with a hardcoded SSID and passphrase. (Still from inside the `monoW
 ```cpp
 
 	redpine::Module::setupWifiOnly("MY_SSID", "MY_PASSPHRASE");
+	
+	// print something in the console
+	console.WriteLine("Connecting...");
 
 ```
 
@@ -192,7 +201,8 @@ Notice the ampersand (`&`) symbol that define the `data` parameter as a referenc
 
 	void AppController::httpHandleData(const network::HttpClient::HttpResponseData &data)
 	{
-		helloLabel.setText(data.bodyChunk);
+		helloLabel.setText("loading");
+		console.WriteLine(data.bodyChunk);
 		
 		if (data.Finished)
 		{
