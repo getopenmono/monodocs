@@ -108,7 +108,7 @@ I have added numbers to the interresting code lines in comments. Let's go throug
 3. Here we define the `AppController` class itself. It inherits from the abstract interface called `IApplication`. This interface defines the 3 methods the `AppController` must have. We shall examine them shortly.
 4. Here we define the *TextLabel* object that will display our text on the screen. It is defined as a member of the `AppController` class.
 5. We overwrite the [default contructor](https://en.wikipedia.org/wiki/Default_constructor) for our `AppController` class, to allow us to do custom initialization. You will see later why.
-6. This is a required overwrite fro the `IApplication`interface. It is a method that is called when mono is reset.
+6. This is a required overwrite from the `IApplication`interface. It is a method that is called when mono is reset.
 7. Also a requirement from `IApplication`. It defines a method that is called just before mono is put into sleep mode.
 8. As required by `IApplication`, this method is called when mono wake up from sleep mode.
 
