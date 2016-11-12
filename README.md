@@ -1,7 +1,5 @@
 # Mono Docs
 
-[![Documentation Status](https://readthedocs.org/projects/mono-developer-documentation/badge/?version=latest)](http://developer.openmono.com/en/latest/?badge=latest)
-
 This is the source for the site that holds documentation for developers
 of [Mono](http://openmono.com) software and hardware.
 
@@ -61,3 +59,7 @@ In the project root dir, the `conf.py` file contains the build settings. In the 
 ## Releasing new versions
 
 When you are satisfied with your local changes, commit to branch master.  Then go to the [specific project page on Read The Docs](https://readthedocs.org/projects/mono-developer-documentation/) and build a new version.
+
+----
+
+[![Documentation Status](https://readthedocs.org/projects/mono-developer-documentation/badge/?version=latest)](http://developer.openmono.com/en/latest/?badge=latest)
