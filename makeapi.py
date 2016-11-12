@@ -40,6 +40,12 @@ def build_api_reference(inputfile = "api_classes.txt", destination = "reference"
 		f.close()
 		content.write(" * ["+baseName.replace("\n","")+"]("+fileName+")\n")
 
+	content.write("""## mbed API
+
+If you need to interact with the *GPIO*, *Hardware interrupts*, *SPI*, *I<sup>2</sup>C*, etc. you should use the *mbed* layer in the SDK. Take a look on the documentation for mbed:
+
+[**mbed documentation**](https://developer.mbed.org/handbook/Homepage)""")
+
 	content.close()
 
 BuildApiReference = build_api_reference
