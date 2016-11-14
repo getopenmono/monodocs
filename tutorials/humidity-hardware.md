@@ -1,28 +1,30 @@
 # Humidity harware setup
 
-The purpose of this tutorial is to show you how to build a humidity app.
+The purpose of this tutorial is to build a humidity app.
 
 ![Mono connected to humidity sensor](mono-humidity-with-sensor.jpg)
 
 ## Sensor
 
-To get humidity readings into my Mono, I will need a humidity sensor.  For this app I will use the relatively low cost sensor [DHT11](https://www.adafruit.com/products/386) or [DHT22](https://www.adafruit.com/products/385).  Their underlying hardware communication protocol is the same, but the interpretation of the readings differ slightly (DHT22 has better resolution).
+To get humidity readings into my Mono, I will need a humidity sensor.  For this app I will use the relatively low cost sensors [DHT11](https://www.adafruit.com/products/386) and [DHT22](https://www.adafruit.com/products/385).  Their underlying hardware communication protocol is the same, but the interpretation of the readings differ slightly (DHT22 has better resolution).
+
+![DHT11 and DHT22 pinout](humidity-sensors.jpg)
 
 ## Connecting the sensor to Mono
 
-The sensor uses a single wire to transmit data, and it must get power through two additional wires (VCC and ground).
+The sensor uses a single wire to transmit data, and it must get power through two additional wires (3.3V and 0V).
 
-So I need three wires in total from Mono to the sensor.  Mono's mini-jack mount accomodates four lines, so I will solder a set of wires to a mini-jack connector.  For this particular application, I could use a regular three-wire mini-jack, but the mini-jack connector I have has four connections, so I will solder all four and reserve the fourth wire for future experiments.
+So I need three wires in total from Mono to the sensor.  Mono's mini-jack accomodates a total of four wires, so I will use a mini-jack connector and solder a set of wires to it.  For this particular application, I could use a regular three-wire mini-jack, but the mini-jack connector I have has four connections, so I will solder all four wires and reserve the fourth wire for future experiments.
 
 ![Four wires soldered onto mini-jack](mini-jack.jpg)
 
-Here I have put a red wire on the tip, a white wire on ring 1 (the one next to the tip), a black wire on the sleeve.  The green wire is on ring 2, but it is not used in the app.
+Here I have put a red wire on the tip, a white wire on ring 1 (the one next to the tip), a black wire on the sleeve.  The green wire is connectred to ring 2, but it is not used in the app.
 
-With that taken care of, I can connect the sensor to my Mono, and start pulling out data from the sensor.
+With that taken care of, I can connect the sensor to my Mono and start pulling out data from the sensor.
 
 ## Data communication
 
-To sanity check the connection, I will make the simplest possible app that can request a reading from the sensor, and then view the result on an oscilloscope, so I can see that the sensor is working.  **You do not need to do this**, but let's try and see what the sensor communication looks like.
+To sanity check the connection, I will make the simplest possible app that can request a reading from the sensor, and then view the result on an oscilloscope.  **You do not need to do this**, of course, but I will need to do that to show you what the sensor communication looks like.
 
 An application to get the sensor talking must put 3.3V on the tip (red wire), and then alternate the data line (white wire) between 3.3V and 0V to tell the sensor that it needs a reading.  The sleeve (black wire) is by default set to 0V, so nothing needs to be setup there.
 
@@ -41,21 +43,6 @@ class AppController
     mono::Timer measure;
     mbed::Ticker ticker;
     mono::io::DigitalOut out;
-    void put3V3onTip ()
-    {
-        DigitalOut(VAUX_EN,1);
-        DigitalOut(VAUX_SEL,1);
-        DigitalOut(JPO_nEN,0);
-    }
-    void requestSensorReading ()
-    {
-        out = 0;
-        ticker.attach_us(this,&AppController::letGoOfWire,18*1000);
-    }
-    void letGoOfWire ()
-    {
-        out = 1;
-    }
 public:
     AppController()
     :
@@ -71,11 +58,32 @@ public:
     }
     void monoWillGotoSleep ()
     {
-        DigitalOut(JPO_nEN,1);
+        turnOffTip();
     }
     void monoWakeFromSleep () {}
+    void put3V3onTip ()
+    {
+        DigitalOut(VAUX_EN,1);
+        DigitalOut(VAUX_SEL,1);
+        DigitalOut(JPO_nEN,0);
+    }
+    void turnOffTip ()
+    {
+        DigitalOut(JPO_nEN,1);
+    }
+    void requestSensorReading ()
+    {
+        out = 0;
+        ticker.attach_us(this,&AppController::IRQ_letGoOfWire,18*1000);
+    }
+    void IRQ_letGoOfWire ()
+    {
+        out = 1;
+    }
 };
 ```
+
+*Side note*: I use the `IRQ_` prefix on functions that are invoked by interrupts to remind myself that such functions should not do any heavy lifting.
 
 When I connect Mono to the sensor, and hook up an oscilloscope to the data and ground wires, then I get the following picture of the communication when I run the app.
 
