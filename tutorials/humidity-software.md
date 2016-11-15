@@ -207,6 +207,6 @@ For the DHT22 sensor, the [values have one decimal of resolution](https://www.sp
     }
 ```
 
-What is still missing is detecting negative temperatures, unit convertion and auto sleep, but I will leave that as an excercise for you.  Of course, you *could* cheat and look at the full app [in MonoKiosk](http://monokiosk.com/app/com-openmono-humidity).
+What is still missing is detecting negative temperatures, unit conversion and [auto sleep](http://developer.openmono.com/en/latest/tutorials/sleep-mode.html), but I will leave that as an excercise.  Of course, you *could* cheat and look at the full app [in MonoKiosk](http://monokiosk.com/app/com-openmono-humidity).
 
 
