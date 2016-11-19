@@ -8,7 +8,7 @@ By now I expexct you have installed the Mono tool chain, as decribed in the prev
 
 ## Create a new project
 
-Mono comes with a tool called `monomake`, that does once - and one thing only: creating new mono projects. Let's try it!
+Mono comes with a tool called `monomake`, that does one thing - and one thing only: creating new mono projects. Let's try it!
 
 #### Open a terminal
 
