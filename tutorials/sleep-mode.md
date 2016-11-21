@@ -16,9 +16,21 @@ The SDK predefines the behaviour of the *User button*, to toggle sleep mode. Thi
 
 ## Sleep and USB
 
-In our *v1.1* release of our SDK, we enabled sleep mode while connected to the USB. This means that triggering sleep will power-down Mono's USB port. THerefore our computer will loose connection to Mono if it goes to sleep.
+In our *v1.1* release of our SDK, we enabled sleep mode while connected to the USB. This means that triggering sleep will power-down Mono's USB port. Therefore our computer will loose connection to Mono if it goes to sleep.
 
 When you wake up Mono, it will be enumerated once again.
+
+## Sleep and external power
+
+Mono has the ability to provide power for components mounted either on the *Mono Shield Adaptor* or attached through the *3.5mm jack connector*. By default Mono provides 3.3V on this external power rail (called `VAUX`). To safe battery life, the `VAUX` power if turned off in sleep mode. This is the default behaviour, but you can change it if you need to.
+
+In the *3.5mm jack connector* the power on `J_TIP` in sleep mode depends on the USB state. If USB is connected the voltage on `J_TIP` is 1.7V, because of leakage currents from `VBUS`. With no USB attached, the `J_TIP` voltage is 0.0V in sleep mode.
+
+```eval_rst
+.. warning:: We have introducted this behaviour in `Release 1.4`. Before this version the ``VAUX`` line was not limited to 3.3V! Especially in sleep mode, the voltage rises to the battery's current voltage level. In `Release 1.4` we fixed this issue, by turning off auxillary power in sleep mode.
+```
+
+You can consult the [schematics](../schematics/index.md) to see how the power system is configured.
 
 ## Triggering sleep mode
 
