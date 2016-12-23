@@ -7,14 +7,18 @@
 First we begin with downloading the installer package, that will install the framework on your computer:
 
 <table class="table wy-text-center" style="width: 100%;">
-<tr><th>Windows</th><th>macOS</th><th>Linux (Debian)</th></tr>
+<tr><th>Windows</th><th>macOS</th><th>Debian/Ubuntu</th></tr>
 <tr>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_4/OpenMonoSetup-v1.4.3.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a> </td>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_4/OpenMono-v1.4.3-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/tag/SDKv1_4" class="btn btn-neutral" target="_blank"><span class="fa fa-download"></span> Download</a></td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMonoSetup-v1.5.0.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a> </td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMono-v1.5.0-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
+<!-- td><a href="https://github.com/getopenmono/openmono_package/releases/tag/SDKv1_5" class="btn btn-neutral" target="_blank"><span class="fa fa-download"></span> Download</a></td -->
 </tr>
 </table>
 <br/>
+
+```eval_rst
+.. warning:: Our Ubuntu/Debian package has been broken, because Launchpad has updated their GCC Embedded package to version 6. (While discarding older versions!) Version 6 is not binary compatible with version 5.2. Please excuse us the extra time we need to create a new instaler for Debian based distros.
+```
 
 Download the installer package that fits your OS. Run the installer and follow the steps to install Mono's developing tools on your system.
 
