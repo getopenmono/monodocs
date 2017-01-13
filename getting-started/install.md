@@ -9,8 +9,8 @@ First we begin with downloading the installer package, that will install the fra
 <table class="table wy-text-center" style="width: 100%;">
 <tr><th>Windows</th><th>macOS</th><th>Debian/Ubuntu</th></tr>
 <tr>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMonoSetup-v1.5.0.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a></td>
-<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMono-v1.5.0-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMonoSetup-v1.5.1.exe" class="btn btn-neutral"><span class="fa fa-download"></span> Download </a></td>
+<td><a href="https://github.com/getopenmono/openmono_package/releases/download/SDKv1_5/OpenMono-v1.5.1-Mac.pkg" class="btn btn-neutral"><span class="fa fa-download"></span> Download</a></td>
 <td><a href="https://github.com/getopenmono/openmono_package/releases/tag/SDKv1_5" class="btn btn-neutral" target="_blank"><span class="fa fa-download"></span> Download</a></td>
 </tr>
 </table>
