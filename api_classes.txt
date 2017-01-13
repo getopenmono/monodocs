@@ -1,25 +1,24 @@
-## Core Classes
-mono::AppRunLoop
+## Common Utilities
 mono::DateTime
-mono::GenericQueue
-mono::IApplication
-mono::IApplicationContext
-mono::IRunLoopTask
-mono::ITouchSystem
-mono::ManagedPointer
-mono::Queue
+mono::PowerSaver
 mono::QueueInterrupt
 mono::Regex
 mono::String
 mono::Timer
+## Core Classes
+mono::AppRunLoop
+mono::GenericQueue
+mono::IApplication
+mono::IApplicationContext
+mono::IRTCSystem
+mono::IRunLoopTask
+mono::ITouchSystem
+mono::ManagedPointer
+mono::Queue
 mono::TouchEvent
 mono::TouchResponder
 ## UI Widgets
-mono::ui::View
-mono::ui::TextLabelView
-mono::ui::ButtonView
-mono::ui::ProgressBarView
-mono::ui::StatusIndicatorView
+mono::ui::AbstractButtonView
 mono::ui::BackgroundView
 mono::ui::ButtonView
 mono::ui::ConsoleView
@@ -27,6 +26,7 @@ mono::ui::GraphView
 mono::ui::IGraphViewDataSource
 mono::ui::ImageView
 mono::ui::ISettings
+mono::ui::OnOffButtonView
 mono::ui::ProgressBarView
 mono::ui::ResponderView
 mono::ui::StatusIndicatorView
@@ -50,4 +50,4 @@ mono::sensor::IBuzzer
 mono::sensor::ITemperature
 ## Power
 mono::power::IPowerManagement
-mono::power::IPowerSubSystem
+mono::power::IPowerSubSystems
