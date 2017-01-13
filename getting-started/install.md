@@ -16,10 +16,6 @@ First we begin with downloading the installer package, that will install the fra
 </table>
 <br/>
 
-```eval_rst
-.. warning:: Our Ubuntu/Debian package has been broken, because Launchpad has updated their GCC Embedded package to version 6. (While discarding older versions!) Version 6 is not binary compatible with version 5.2. Please excuse us the extra time we need to create a new instaler for Debian based distros.
-```
-
 Download the installer package that fits your OS. Run the installer and follow the steps to install Mono's developing tools on your system.
 
 The installer contains all you need to install apps on mono, and to develop your own apps. The installer package contains:
