@@ -1,12 +1,10 @@
 # Mono Developer Documentation
 
-***Hi, and welcome to our developer documentation site. We imagine you want to create your own mono applications? Well, you can skip all the talking and just start off with: [Getting started installing the framework](getting-started/install.md), and you are already half way.***
+**_Skip all the talking and just start off with: [Getting started installing the framework](getting-started/install.md), and you are already half way._**
 
 ### What to find here?
 
-Here on our developer site, we will collect all learning resources about mono. You will find initial getting started guides, followed by tutorials on specific topics, in-depth articles and last (but not least) the API reference docs.
-
-*Right now we are in the process of writing the documentation, so you might encounter broken links, typos, bad gramma and a lot of misspellings.*
+Here on our developer site, we collect all learning resources about mono. You will find initial getting started guides, followed by tutorials on specific topics, in-depth articles and last (but not least) the API reference docs.
 
 We prioritize to get as much text published fast, instead of keeping our cards close. We hope you like our desicion. Anyway - should you encounter anything you would like to correct - see: [Contributing](#contribute)
 
@@ -20,6 +18,9 @@ We prioritize to get as much text published fast, instead of keeping our cards c
  * [Datasheets](datasheets/datasheets.md)
  * [API Reference](reference/reference.md)
 
+### Direct Download
+
+Go straight to our download page: [Download SDKs](downloads/index.md)
 
 ### Implementation status
 

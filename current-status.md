@@ -1,18 +1,22 @@
 # Current Frameowrk Status
 
-**Mono Framework is still work in progress, not all classes and features are implemented. We have chosen prioritize the crucial components of the framework, and keep the some functionalities in the pipeline.**
+**Mono Framework is a continuous process. We prioritize the crucial components of the framework, and keep the some functionalities in the pipeline.**
+
+_Also see the [API Reference](reference/reference.md)_
 
 Here is a list of the components and their implementation, sorted by category:
 
 #### Core Classes
 
-* **String**: Fully implemented (heap based and lightweight)
+* **String**: Fully implemented (lightweight)
 * **Timer**: Fully implemented
 * **Managed Pointer**: fully implemented
 * **Queue**: Fully implemented
 * **Regex**: Fully implemented
 * **QueuedInterrupt**: Fully implemented (with debouncing)
 * **stdio.h**: fully implemented (powered by mbed).
+* **DateTime**: Fully functional - but does linear time calcs.
+* **PowerSaver**: First revision
 
 #### Core Application
 
@@ -20,6 +24,7 @@ Here is a list of the components and their implementation, sorted by category:
 * **ApplicationController**: Interface is fully defined
 * **Application Run Loop**: Fully implemented
 * * **Run Loop Task**: Interface fully defined
+* **RTC System Interface**: Fully implemented
 
 #### Power Management
 
@@ -41,11 +46,11 @@ Here is a list of the components and their implementation, sorted by category:
 * **Color**: Fully implemented
 * **DisplayController**: Fully functional, need optimizations
 * **DisplayPainter**: Fully functional, needs optimizations.
-* **Fonts**: Sparsely implemented - better fonts needed
+* **TextRender**: Mostly implemented
 
 ##### UI Classes
 
-* **Parent View**: Fully implemented
+* **View**: Fully implemented
 * **ButtonView**: Partially implemented - needs subclasses for different button types
 * **ConsoleView**: Fully implemented
 * **ImageView**: Fully implemented
