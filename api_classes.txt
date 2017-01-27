@@ -1,9 +1,11 @@
 ## Common Utilities
 mono::DateTime
 mono::PowerSaver
+mono::Queue
 mono::QueueInterrupt
 mono::Regex
 mono::String
+mono::ScheduledTask
 mono::Timer
 ## Core Classes
 mono::AppRunLoop
@@ -14,7 +16,6 @@ mono::IRTCSystem
 mono::IRunLoopTask
 mono::ITouchSystem
 mono::ManagedPointer
-mono::Queue
 mono::TouchEvent
 mono::TouchResponder
 ## UI Widgets
@@ -25,7 +26,6 @@ mono::ui::ConsoleView
 mono::ui::GraphView
 mono::ui::IGraphViewDataSource
 mono::ui::ImageView
-mono::ui::ISettings
 mono::ui::OnOffButtonView
 mono::ui::ProgressBarView
 mono::ui::ResponderView
@@ -33,12 +33,14 @@ mono::ui::StatusIndicatorView
 mono::ui::TextLabelView
 mono::ui::TouchCalibrator
 mono::ui::View
+## Network
+mono::network::HttpClient
+mono::network::HttpPostClient
 ## Drawing
 mono::display::Color
 mono::display::DisplayPainter
 mono::display::IDisplayController
 mono::display::TextRender
-MonoFont #struct
 ## Geometry
 mono::geo::Circle
 mono::geo::Point
