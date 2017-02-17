@@ -7,7 +7,7 @@
 
 <script>
 var release='SDKv1_6'
-var version = '1.6.0'
+var version = '1.6.1'
 var url = 'https://github.com/getopenmono/openmono_package/releases/tag/'+release
 window.location = url
 </script>
