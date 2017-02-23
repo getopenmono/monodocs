@@ -58,7 +58,7 @@ Voila, your mono application compiled and the executable is `hello_world.elf`. T
 If you already have mono connected via USB, you can upload your new application to it by:
 
 ```
-	$ make install
+	$ sudo make install
 ```
 
 The `install` command will search to any connected Mono's, reboot it and upload the application. If everything went smoothly you should see the text *Hi, I'm Mono* on the display.
