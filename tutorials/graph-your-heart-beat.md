@@ -522,7 +522,7 @@ If everything goes as we expect, you should see the signal stabilizing around th
 
 Place your finger or earlobe on the sensor, sit still and look for the spikes, after the DC filter has settled again.
 
-<video src="https://github.com/getopenmono/monodocs/raw/master/tutorials/pulse-sensor-done.mov" autoplay loop style="max-width: 100%;"></video>
+<video src="https://github.com/getopenmono/monodocs/raw/master/tutorials/pulse-sensor-done.mov" autoplay loop style="max-width: 100%;"></video>  
 *This is what you should see on Mono's display. Depending on the sensor environment, spikes might be more or less visisble.*
 
 ### Further reading
