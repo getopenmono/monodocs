@@ -5,7 +5,7 @@
 The final app will render the input signal from the sensor as a graph on Mono's display. The heart beat will appear as spikes on the graph.
 
 <video src="https://github.com/getopenmono/monodocs/raw/master/tutorials/mono-pulse-sensor.m4v" autoplay loop style="max-width: 100%;"></video>
-*In this video example our hardware engineer Lasse has build his own version of the sensor, based on the schematics from [pulsesensor.com](http://pulsesensor.com)*
+*In this video example our hardware engineer Lasse has build his own version of the sensor and software, based on the schematics from [pulsesensor.com](http://pulsesensor.com)*
 
 We will focus on the software and assume your have the sensor from [pulsesensor.com](http://pulsesensor.com). We will be sampling the ADC at fixed intervals and update the display. Further, if you wish to detect the frequency of the spikes, I will link to a nice article about the topic.
 
