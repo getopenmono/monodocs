@@ -18,9 +18,9 @@ All views has a visibility state. This state is used by the display system to kn
 
 ### Painting views
 
-When you create your own views, you must subclass the [`View`](../reference/mono_ui_View.md) class and you are required to overwrite 1 method: `repaint()`. This is the method that paints the view on the screen. The method is automatically called by the display system - you should never call it manually!
+When you create your own views, you must subclass the [`View`](../reference/mono_ui_View.html) class and you are required to overwrite 1 method: `repaint()`. This is the method that paints the view on the screen. The method is automatically called by the display system - you should never call it manually!
 
-All views share a common [`DisplayPainter`](../reference/mono_display_DisplayPainter.md) object that can draw primitives. You should draw primitives only from inside the `repaint()` method. If you draw primitives from outside the method, you might see artifacts on the screen.
+All views share a common [`DisplayPainter`](../reference/mono_display_DisplayPainter.html) object that can draw primitives. You should draw primitives only from inside the `repaint()` method. If you draw primitives from outside the method, you might see artifacts on the screen.
 
 ## The Goal
 
@@ -56,7 +56,7 @@ public:
 };
 ```
 
-We overwrite only the constructor and the repaint function. The default constructor for *views* takes a [`Rect`](../reference/mono_geo_Rect.md) that defines the views position and dimensions.
+We overwrite only the constructor and the repaint function. The default constructor for *views* takes a [`Rect`](../reference/mono_geo_Rect.html) that defines the views position and dimensions.
 
 In the implementation file (*custom_view.cpp*) we add the implementation of the two methods:
 
@@ -132,7 +132,7 @@ To highlight the views boundary rectangle we draw an outlined rectangle with the
 
 Next, we begin to draw the crossing lines - one at the time. The `drawLine` routine take the begin and end points of the line. We use a set of convenience methods on the `Rect` class to get the positions of the *view rectangle*'s corners.
 
-The [`Circle`](../reference/mono_geo_Circle.md) class defines circles by a center and a radius. We can get the *view rectangles* center using another convenient method on the `Rect` object. But we need to do a little bit of calculations to get the radius. We use the smallest of the width and height, to keep the circle within the view boundaries. (And subtract 1 to not overwrite the border.)
+The [`Circle`](../reference/mono_geo_Circle.html) class defines circles by a center and a radius. We can get the *view rectangles* center using another convenient method on the `Rect` object. But we need to do a little bit of calculations to get the radius. We use the smallest of the width and height, to keep the circle within the view boundaries. (And subtract 1 to not overwrite the border.)
 
 Lastly, we disable the anti-aliased drawing. To leave the `DisplayPainter` as we found it.
 

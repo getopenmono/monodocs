@@ -13,8 +13,8 @@
  1. [Using file I/O](using_file_io.md)
  1. [Creating Custom Views](custom_views.md)
  1. [Pulse Sensor: Graph your Heart beat](graph-your-heart-beat.md)
+ 1. [Responding to Touch](responding_to_touch.md)
 
- <!-- 1. [Responding to Touch](responding_to_touch.md) -->
  <!-- 1. [Drawing UI Widgets](drawing_ui_elements.md) -->
 
 ### Humidty app
