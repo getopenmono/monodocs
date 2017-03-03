@@ -32,7 +32,7 @@ _The colors are in respect to pulsesensor.com's pin connections_
 
 The *analog output* is the sensors signal that we need to feed to the Mono's ADC. The 5V power source we can get from the USB connection. As long as we keep the USB connected, we do not need to use Mono's internal boost converter.
 
-## Step 1
+## Step 1: Jack connector
 
 You need to have a 3 or 4 pole 3.5mm jack connector. If you have one in your stash, use that. If not, you need to go acquire one from the web or your favourite electronics dealer.
 
@@ -51,7 +51,7 @@ When the hardware in place, we are ready to code! We need to do a few steps in s
 1. Lowpass filter the ADC output
 1. Draw a graph of the filtered signal.
 
-## Step 2
+## Step 2: New project
 
 ```eval_rst
 .. note:: I have taken the liberty to assume that you already have installed Mono SDK. If you have not, please follow the `getting started tutorial <../getting-started/install.html>`_, and return here again thereafter.
@@ -283,7 +283,7 @@ This is the complete graph class, that can draw an array of values as a graph on
 .. note:: You might wonder where the *.cpp* implementation file for this class is. You can in fact implement function bodies in header files. However, this is far from the best practice. My only excuse to do it here, is that I am lazy and I try to keep this tutorial as short as possible.
 ```
 
-## Step 4
+## Step 4: App Controller
 
 Now we will turn attention to the *app_controller.h* and *.cpp* files. This object will control power and ADC sampling, lowpass filter and utilize our graph view.
 
@@ -494,7 +494,7 @@ void AppController::monoWakeFromSleep()
 
 Upon wake-up we re-enable power output on `J_TIP` and activate the Ticker again. Because the display has been powered off, we also need to repaint its content.
 
-## Step 5
+## Step 5: Result
 
 Now, is the moment of truth where you should compile the app. Go to the terminal and run:
 
