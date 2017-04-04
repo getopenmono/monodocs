@@ -120,25 +120,25 @@ Now, this code snippet is a mouthful. Let me break it down to pieces:
 
 ### The constructor
 
-Our constructor simply forwards the provided `Rect` object to the parent (`View`) constructor. The parent constructor will take care of initializing the our views properties. In our implementation we simply call the parent constructor and leave the methods body empty.
+Our constructor simply forwards the provided `Rect` object to the parent (`View`) constructor. The parent constructor will take care of initializing the our view's properties. In our implementation we simply call the parent constructor and leave the method's body empty.
 
 ### The repainting
 
-This is here we actually paint the view. As mentioned earlier all views share a global `DisplayPainter` object. This object holds a set of properties like paint brush colors and anti-aliasing settings. Therefore, to be sure about what colors you are painting, you should always set the colors in your `repaint()` method.
+This is here we actually paint the view. As mentioned earlier, all views share a global `DisplayPainter` object. This object holds a set of properties like paint brush colors and anti-aliasing settings. Therefore, to be sure about what colors you are painting, you should always set the colors in your `repaint()` method.
 
-We start by enabling anti-aliased drawing of lines. This slows down the painting process a bit, but the lines looks much smoother. Next, we set the *painters* background brush color to black. With the black color set, we draw a filled rectangle clearing the entire area of the view. This is important because there might be some old graphics present on the screen.
+We start by enabling anti-aliased drawing of lines. This slows down the painting process a bit, but the lines looks much smoother. Next, we set the *painter*'s background color to black. With the black color set, we draw a filled rectangle clearing the entire area of the view. This is important because there might be some old graphics present on the screen.
 
-To highlight the views boundary rectangle we draw an outlined rectangle with the dimension of the views own rectangle. You can say we give the view a border.
+To highlight the views boundary rectangle, we draw an outlined rectangle with the dimension of the view's own rectangle. You can say we give the view a border.
 
-Next, we begin to draw the crossing lines - one at the time. The `drawLine` routine take the begin and end points of the line. We use a set of convenience methods on the `Rect` class to get the positions of the *view rectangle*'s corners.
+Next, we begin to draw the crossing lines - one at the time. The `drawLine` routine takes the begin and end points of the line. We use a set of convenience methods on the `Rect` class to get the positions of the *view rectangle*'s corners.
 
-The [`Circle`](../reference/mono_geo_Circle.html) class defines circles by a center and a radius. We can get the *view rectangles* center using another convenient method on the `Rect` object. But we need to do a little bit of calculations to get the radius. We use the smallest of the width and height, to keep the circle within the view boundaries. (And subtract 1 to not overwrite the border.)
+The [`Circle`](../reference/mono_geo_Circle.html) class defines circles by a center and a radius. We can get the *view rectangle*'s center using another convenient method on the `Rect` object. But we need to do a little bit of calculations to get the radius. We use the smallest of the width and height, to keep the circle within the view boundaries. (And subtract 1 to not overwrite the border.)
 
 Lastly, we disable the anti-aliased drawing. To leave the `DisplayPainter` as we found it.
 
 ## The Result
 
-Now, we must add our *CustomView* to our application. This means we must use it from the *AppController*. Therefore, include the header file in *app_controller.h*, and add our *CustomView* as a member variable:
+Now, we must add our *CustomView* to our application. This means we must use it from the *AppController*. Therefore, include the header file in *custom_view.h*, and add our *CustomView* as a member variable:
 
 ```cpp
 #include "custom_view.h"
