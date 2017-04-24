@@ -44,7 +44,7 @@ Also, in the header file we need to add member variables for the module to the *
 .. note:: The class *HttpClient* is a quick'n'dirty implementation, and is likely to be phased out to future releases of Mono Framework.
 ```
 
-Therefore we extend the class members with:
+Therefore we extend the existing `AppController` with the class members:
 
 ```cpp
 
@@ -53,7 +53,9 @@ Therefore we extend the class members with:
 		// This is the text label object that will displayed
     	TextLabelView helloLabel;
     	
-	    // The hardware SPI port
+		// NEW CLASS MEMBERS HERE:
+		
+		// The hardware SPI port
     	mbed::SPI spi;
     	// The spi based communication interface for the module
     	redpine::ModuleSPICommunication spiComm;
@@ -64,12 +66,14 @@ Therefore we extend the class members with:
     	// a console view to display html data
     	mono::ui::ConsoleView<176, 110> console;
     
+		// END OF NEW CLASS MEMBERS
+	
 	public:
     
     	AppController();
     	
     	// ...
-	}
+	};
 	
 ```
 
