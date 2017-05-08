@@ -138,7 +138,7 @@ Because the connecting process is running in the background, we would like to be
 
 ```cpp
 
-	class AppController : mono::IApplication
+	class AppController : public mono::IApplication
 	{
 	// ...
 	
@@ -149,7 +149,7 @@ Because the connecting process is running in the background, we would like to be
 	// ...
 ```
 
-Next, we add the method body in the implementation file:
+Next, we add the method body in the implementation (*.cpp*) file:
 
 ```cpp
 
