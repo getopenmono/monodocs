@@ -112,19 +112,15 @@ The correct approach here is to create a class (say *MyClass*), and let the *Tex
 The complete code added to the project global context and in the `setup()` function:
 
 ```cpp
-#include <mono.h>               // 1
-#include <app_controller.h>     // 2
+#include <mono.h>                 // 1
+#include <app_controller.h>       // 2
 
-using mono::ui::TextLabelView;  // 3
-using mono::geo::Rect;          // 3
-using mono::display::Color;     // 3
-
-TextLabelView textLbl;          // 4
+mono::ui::TextLabelView textLbl;  // 3
 
 void setup() {
-  textLbl = TextLabelView(Rect(30, 73, 176, 20), "Hi, I'm Mono");  // 5
-  textLbl.setTextColor(WhiteColor);                                // 6
-  textLbl.show();                                                  // 7
+  textLbl = mono::ui::TextLabelView(mono::geo::Rect(30, 73, 176, 20), "Hi, I'm Mono");  // 4
+  textLbl.setTextColor(WhiteColor);                                                     // 5
+  textLbl.show();                                                                       // 6
 }
 
 void loop() {
@@ -135,11 +131,10 @@ I have numbered the interesting source code lines, let go through them one by on
 
 1. We include the Mono Framework, to have access to Mono's API.
 2. Include refences to the default AppController object
-3. Open the namespaces we use in app, to avoid typing namespaces repeatedly.
-4. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
-5. Construct a *TextLabelView* with a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(30,73)$`` and dimension ``$(176,20)$``.  In the constructors second parameters we set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
-6. Because the screen on the Arduino template app is black, we need to tell the label to use a *White* text color.
-7. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
+3. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
+4. Construct a *TextLabelView* with a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(30,73)$`` and dimension ``$(176,20)$``.  In the constructors second parameters we set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
+5. Because the screen on the Arduino template app is black, we need to tell the label to use a *White* text color.
+6. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
 
 Now you can press the compile button (<i class="fa fa-check"></i>) and see the code compiles. If you have Mono connected you can upload the application by pressing the <i class="fa fa-arrow-circle-right"></i> button.
 
