@@ -44,7 +44,7 @@ To build the docs locally you need the Python Package manager `pip`. On a mac wi
 
 	$ brew install python
 
-With `brew`'s  python distribution installed, install `sphinx` and then `recommonmark` to support markdown:
+With `brew`'s python distribution installed, install `sphinx` and then `recommonmark` to support markdown:
 
 	$ pip install sphinx
 	$ pip install recommonmark
@@ -55,6 +55,8 @@ With `brew`'s  python distribution installed, install `sphinx` and then `recommo
 In the project root dir, the `conf.py` file contains the build settings. In the root dir, run:
 
 	$ sphinx-build . _build/
+
+To include new classes in the documentation, add lines to `api_classes.txt`.
 
 ## Releasing new versions
 

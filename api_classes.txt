@@ -29,6 +29,7 @@ mono::ui::ImageView
 mono::ui::OnOffButtonView
 mono::ui::ProgressBarView
 mono::ui::ResponderView
+mono::ui::SceneController
 mono::ui::StatusIndicatorView
 mono::ui::TextLabelView
 mono::ui::TouchCalibrator
