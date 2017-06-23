@@ -2,7 +2,6 @@
 mono::DateTime
 mono::PowerSaver
 mono::Queue
-mono::QueueInterrupt
 mono::Regex
 mono::String
 mono::ScheduledTask
@@ -25,6 +24,7 @@ mono::ui::ButtonView
 mono::ui::ConsoleView
 mono::ui::GraphView
 mono::ui::IGraphViewDataSource
+mono::ui::IconView
 mono::ui::ImageView
 mono::ui::OnOffButtonView
 mono::ui::ProgressBarView
@@ -34,6 +34,15 @@ mono::ui::StatusIndicatorView
 mono::ui::TextLabelView
 mono::ui::TouchCalibrator
 mono::ui::View
+## IO
+mono::io::DigitalOut
+mono::io::File
+mono::io::FilteredAnalogIn
+mono::io::HysteresisTrigger
+mono::io::OneWire
+mono::QueueInterrupt
+mono::io::RunningAverageFilter
+mono::io::Serial
 ## Network
 mono::network::HttpClient
 mono::network::HttpPostClient
@@ -42,6 +51,7 @@ mono::display::Color
 mono::display::DisplayPainter
 mono::display::IDisplayController
 mono::display::TextRender
+mono::display::MonoIcon#struct
 ## Geometry
 mono::geo::Circle
 mono::geo::Point
