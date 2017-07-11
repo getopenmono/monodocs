@@ -1,7 +1,9 @@
 ## Common Utilities
 mono::DateTime
+mono::GenericQueue
 mono::PowerSaver
 mono::Queue
+mono::IQueueItem
 mono::Regex
 mono::String
 mono::ScheduledTask
@@ -32,20 +34,24 @@ mono::ui::ResponderView
 mono::ui::SceneController
 mono::ui::StatusIndicatorView
 mono::ui::TextLabelView
-mono::ui::TouchCalibrator
+mono::ui::TouchCalibrateView
 mono::ui::View
 ## IO
 mono::io::DigitalOut
 mono::io::File
+mono::io::FileSystem
 mono::io::FilteredAnalogIn
 mono::io::HysteresisTrigger
 mono::io::OneWire
 mono::QueueInterrupt
 mono::io::RunningAverageFilter
 mono::io::Serial
+mono::io::IWifi
 ## Network
+mono::network::DnsResolver
 mono::network::HttpClient
 mono::network::HttpPostClient
+mono::network::INetworkRequest
 ## Drawing
 mono::display::Color
 mono::display::DisplayPainter
@@ -62,5 +68,12 @@ mono::sensor::IAccelerometer
 mono::sensor::IBuzzer
 mono::sensor::ITemperature
 ## Power
+mono::power::IPowerAware
 mono::power::IPowerManagement
-mono::power::IPowerSubSystems
+mono::power::IPowerSubSystem
+## Redpine Module I/O
+mono::redpine::ManagementFrame
+mono::redpine::Module
+mono::redpine::ModuleCommunication
+mono::redpine::ModuleFrame
+mono::redpine::ModuleSPICommunication
