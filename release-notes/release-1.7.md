@@ -8,6 +8,36 @@ In our effort to streamline the API and make embedded development on Mono easy a
 
 In this release note we shall driefly mention all new features in 1.7 and discuss the most important in-depth.
 
+### Update 1.7.3
+
+*July 18th, 2017*
+
+A major change in this release is the `TouchResponder` and `ResponderView` interfaces. The touch handler method are now not capitalized. However, legacy code will continue to work. You should still transition your code to use the lower case variants of the touch handler methods.
+
+* Added a Wifi initialization class, to ease use of Wifi. [Feature](https://github.com/getopenmono/mono_framework/issues/22)
+* Fixed typo in *GraphView* class, `BufferLenght` is now: `BufferLength`
+* Added C function pointer callbacks for Redpine module. [Improvement](https://github.com/getopenmono/mono_framework/issues/21)
+* Better Arduino API support in Module communication class, added parametersless constructor. [Improvement]ttps://github.com/getopenmono/mono_framework/issues/19)
+* Added C function pointer callbacks for network classes. [Improvement](https://github.com/getopenmono/mono_framework/issues/16)
+* HttpPost does not append dummy bytes. [Fix](https://github.com/getopenmono/mono_framework/issues/17)
+* *PowerSaver* class can be assigned. [Fix](https://github.com/getopenmono/mono_framework/issues/15)
+* *TouchResponder* uses more non-capitalized syntax. [Improvement](https://github.com/getopenmono/mono_framework/issues/14)
+* Added mono owned SD *FileSystem* class, supporting sleep and wake. [Feature](https://github.com/getopenmono/mono_framework/issues/13)
+* More deprecated upper-cased method names on: *Queue*, *Power Aware interface*, *TouchResponder* and more.
+* Added more documentation to core classes: *String*, *Queue* and *Power Aware*
+* *GenericQueue* will not compile if you use an queue item not inheriting from `IQueueItem`.
+
+### Update 1.7.1
+
+*June 28th, 2017*
+
+This minor update contains two main changes:
+
+* Fix: The power to the RTC is no longer turned off in sleep
+* Feature: Added a `setIcon` method to `IconView` as needed by the *Chores* app
+
+### Original 1.7 Relase
+
 ## List of new features and fixes
 
 ### New features

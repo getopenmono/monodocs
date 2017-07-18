@@ -18,7 +18,7 @@ When the download has started, you can safely:
 
 <script>
 var release='SDKv1_7'
-var version = '1.7.1'
+var version = '1.7.3'
 var url = 'https://github.com/getopenmono/openmono_package/releases/download/'+release+'/OpenMono-v'+version+'-Mac.pkg'
 window.location = url
 </script>
