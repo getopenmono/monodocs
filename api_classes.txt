@@ -68,6 +68,7 @@ mono::sensor::IAccelerometer
 mono::sensor::IBuzzer
 mono::sensor::ITemperature
 ## Power
+mono::power::MonoBattery
 mono::power::IPowerAware
 mono::power::IPowerManagement
 mono::power::IPowerSubSystem
