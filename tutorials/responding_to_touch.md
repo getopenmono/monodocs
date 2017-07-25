@@ -22,13 +22,13 @@ public:
 
     AutoDimmer();
 
-    void RespondTouchBegin(mono::TouchEvent &event);
+    void respondTouchBegin(mono::TouchEvent &event);
 
     void dim();
 };
 ```
 
-Our class inherits from `TouchResponder` and it overwrites the method `RespondTouchBegin`. This method gets called on every touch event, regardless on the touch inputs position. To dim the screen after some time, we use a `Timer` object, that calls the `dim()` method when it times out. Lastly, we create a constructor to setup the timer and insert our class into the touch responder chain.
+Our class inherits from `TouchResponder` and it overwrites the method `respondTouchBegin`. This method gets called on every touch event, regardless on the touch inputs position. To dim the screen after some time, we use a `Timer` object, that calls the `dim()` method when it times out. Lastly, we create a constructor to setup the timer and insert our class into the touch responder chain.
 
 Create an implementation file for our class, called *auto_dimmer.cpp*:
 
@@ -42,20 +42,20 @@ AutoDimmer::AutoDimmer() : mono::TouchResponder()
     dimTimer.setCallback<AutoDimmer>(this, &AutoDimmer::dim);
 
     //start dim timer
-    dimTimer.Start();
+    dimTimer.start();
 }
 
-void AutoDimmer::RespondTouchBegin(mono::TouchEvent &event)
+void AutoDimmer::respondTouchBegin(mono::TouchEvent &event)
 {
     //stop timer
-    dimTimer.Stop();
+    dimTimer.stop();
 
     //undim screen
     mono::display::IDisplayController *ctrl = mono::IApplicationContext::Instance->DisplayController;
     ctrl->setBrightness(255);
 
     //restart dim timer
-    dimTimer.Start();
+    dimTimer.start();
 
     //make sure event handling continues
     event.handled = false;
@@ -63,7 +63,7 @@ void AutoDimmer::RespondTouchBegin(mono::TouchEvent &event)
 
 void AutoDimmer::dim()
 {
-    dimTimer.Stop();
+    dimTimer.stop();
 
     //dim screen
     mono::display::IDisplayController *ctrl = mono::IApplicationContext::Instance->DisplayController;
@@ -129,9 +129,9 @@ We are going to use the class [`ResponderView`](../reference/mono_ui_ResponderVi
 
 The *ResponderView* requires you to overload 3 methods, that differ from the ones from *TouchResponder*. These are:
 
-* `void TouchBegin(TouchEvent &)`
-* `void TouchMove(TouchEvent &)`
-* `void TouchEnd(TouchEvent &)`
+* `void touchBegin(TouchEvent &)`
+* `void touchMove(TouchEvent &)`
+* `void touchEnd(TouchEvent &)`
 
 These methods are triggered only if the touch are inside the *view rect*. Further, the [`TouchEvent`](../reference/mono_TouchEvent.html) reference they provide are converted to display coordinates for you. This means these are in pixels, and not raw touch values.
 
@@ -161,9 +161,9 @@ public:
     Slider(const mono::geo::Rect &rct);
 
 	// ResponderView overloads
-    void TouchBegin(mono::TouchEvent &event);
-    void TouchEnd(mono::TouchEvent &event);
-    void TouchMove(mono::TouchEvent &event);
+    void touchBegin(mono::TouchEvent &event);
+    void touchEnd(mono::TouchEvent &event);
+    void touchMove(mono::TouchEvent &event);
 
 	// Ambiguous View overloads
     void show();
@@ -187,7 +187,7 @@ Slider::Slider(const Rect &rct) :
     this->setMinimum(0);
 }
 
-void Slider::TouchBegin(TouchEvent &event)
+void Slider::touchBegin(TouchEvent &event)
 {
     int relative = event.Position.X() - this->ProgressBarView::viewRect.X();
     
@@ -195,9 +195,9 @@ void Slider::TouchBegin(TouchEvent &event)
     this->ProgressBarView::scheduleRepaint();
 }
 
-void Slider::TouchEnd(TouchEvent &) { }
+void Slider::touchEnd(TouchEvent &) { }
 
-void Slider::TouchMove(TouchEvent &event)
+void Slider::touchMove(TouchEvent &event)
 {
     int relative = event.Position.X() - this->ProgressBarView::viewRect.X();
 

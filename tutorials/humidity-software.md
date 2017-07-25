@@ -56,9 +56,9 @@ public:
 
 From the [first part](humidity-hardware.md) of this tutorial, you know how to start a reading from the sensor, but it gets somewhat more complicated to capture and interpret the data from the sensor.
 
-The data from the sensor is a series of bits, where each bit value is determined by the length of each wave.  So I can make my app to trigger on the start of each new wave and then record the time that has passed since the the last wave started.  The triggering can be done by attaching an interrupt handler to the data wire, which is done by using the `InterruptIn` class from the [mbed  library](https://developer.mbed.org/handbook/InterruptIn).
+The data from the sensor is a series of bits, where each bit value is determined by the length of each wave.  So I can make my app to trigger on the start of each new wave and then record the time that has passed since the the last wave started.  The triggering can be done by attaching an interrupt handler to the data wire, which is done by using the `InterruptIn` class from the [mbed library](https://developer.mbed.org/handbook/InterruptIn).
 
-Compared to the [first version](humidity-hardware.md), I now have an array `bits` and an index `bitIndex` into this array so that I can collect the bits I read from the sensor.  The `requestSensorReading` function now resets `bitIndex` before requesting a new reading, and `IRQ_letGoOfWireAndListen` sets up the function `IRQ_falling` to get called every time there is a [falling edge](https://en.wikipedia.org/wiki/Signal_edge) on the data line from the sensor:
+Compared to the [first version](humidity-hardware.md), I now have an array `bits` and an index `bitIndex` into this array so that I can collect the bits I read from the sensor. The `requestSensorReading` function now resets `bitIndex` before requesting a new reading, and `IRQ_letGoOfWireAndListen` sets up the function `IRQ_falling` to get called every time there is a [falling edge](https://en.wikipedia.org/wiki/Signal_edge) on the data line from the sensor:
 
 ```c++
 #include <mono.h>

@@ -77,7 +77,7 @@ void AppController::monoWakeFromReset()
     // set the timers callback handler
     timer.setCallback<AppController>(this, &AppController::timerFire);
     // start the timer
-    timer.Start();
+    timer.start();
 }
 ```
 
@@ -130,7 +130,7 @@ helloLabel.show();
 // set the timers callback handler
 timer.setCallback<AppController>(this, &AppController::timerFire);
 // start the timer
-timer.Start();
+timer.start();
 
 stView.show();
 ```
@@ -246,7 +246,7 @@ void AppController::monoWakeFromReset()
     // set the timers callback handler
     timer.setCallback<AppController>(this, &AppController::timerFire);
     // start the timer
-    timer.Start();
+    timer.start();
     
     stView.show();
 }
