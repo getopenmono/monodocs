@@ -14,8 +14,8 @@
  1. [Creating Custom Views](custom_views.md)
  1. [Responding to Touch](responding_to_touch.md)
  1. [Pulse Sensor: Graph your Heart beat](graph-your-heart-beat.md)
- 
- <!-- 1. [Triggering IFTTT Webhooks](arduino_quoting_arnold.md) -->
+1. [Triggering IFTTT Webhooks](arduino_quoting_arnold.md) (Arduino)
+
  <!-- 1. [Drawing UI Widgets](drawing_ui_elements.md) -->
 
 ### Humidty app
