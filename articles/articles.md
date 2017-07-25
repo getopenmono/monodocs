@@ -5,6 +5,7 @@ In this chapter we shall take a dive into the structure and workings of *Mono Fr
 
  1. [Architectural Overview](architectural-overview.md)
  1. [Display System Architecture](display_system_architecture.md)
+ 1. [The C programmer guide to C++](c-program-guide-cpp.md)
  1. [Bare Metal C++: A practical Guide](bare_metal_cpp.md)
  
  * Queued callbacks and interrupts

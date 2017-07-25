@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-By now I expexct you have installed the Mono tool chain, as decribed in the previous tutorial. Also, it is best if you are familiar with object oriented programming. If you are not, then you might find yourself thinking "what the heck is a class and inheritance!" But read on anyways, but I will recommend to read our Object oriented guide to C++.
+By now I asssume you have installed the *OpenMono SDK*, as decribed in the previous tutorial. Also, it is best if you are familiar with *object oriented programming*. If you are not, then you might find yourself thinking "what the heck are classes and inheritance!" But read on anyways, but I will recommend to read our [*C programmers guide to C++*](articles/c-program-guide-cpp.md).
 
 ## Create a new project
 
@@ -58,7 +58,7 @@ Voila, your mono application compiled and the executable is `hello_world.elf`. T
 If you already have mono connected via USB, you can upload your new application to it by:
 
 ```
-	$ sudo make install
+	$ make install
 ```
 
 The `install` command will search to any connected Mono's, reboot it and upload the application. If everything went smoothly you should see the text *Hi, I'm Mono* on the display.
