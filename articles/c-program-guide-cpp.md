@@ -582,9 +582,135 @@ When you create your own C++ classes, think about these three. Mostly you don't 
 
 ## Namespaces
 
+When developing your application you might choose class names that already existing in the system. say you create a class called *String*, changes are that this name is taken by the systems own *String class*. In deed this is the case in OpenMono SDK.
+
+To avoid name collisions for common classes such as *Array*, *String*, *Buffer*, *File*, etc. C++ has a feature called *namespaces*.
+
+A *namespace* is a grouping of names, inside a named container.  All OpenMono classes provided by the SDK is defined inside a *namespace* called `mono`. You can use double colens to reference classes inside namespaces:
+
+```cpp
+mono::String str1;
+mono::io::Wifi wifi;
+mono::ui::TextLabelView txtLbl;
+```
+
+Here we define instances (using the *default constructor*) that are declared inside the namespace `mono` and the sub-namespaces: `io` and `ui`.
+
+### Declaring namespaces
+
+So far we have seen only classes declared in global space. That is outside any namespace. Say, we want to group all our geometric classes in a namespace called `geo`.
+
+Then *Rect* would be declared as such:
+
+```cpp
+namespace geo {
+    class Rect
+    {
+    public:
+        int x,y,width,height;
+
+        // ...
+    };
+}
+```
+
+Now, any code inside the `namespace geo { ... }` curly braces can reference the class `Rect` by its name. However, any code outside the namespace must define the namespace as well as the class name: `geo::Rect`.
+
+Namespaces can contains other namespaces. We can create a new namespace inside `geo` called `threeD`. Then we can rename `Rect3D` to `Rect` and declare it inside the `threeD` namespace:
+
+```cpp
+namespace geo {
+    namespace threeD {
+        class Rect : public geo::Rect
+        {
+            int z, depth;
+
+            // ...
+        };
+    }
+}
+```
+
+### The *using* directive
+
+If you are outside a namespace (like `geo`) and often find yourself referencing `geo::Rect`, there is a short cut. C++ offers a `using` directive much like C# does.
+
+The `using` directive imports a namespace into the current context:
+
+```cpp
+using namespace geo;
+
+Rect frame;
+```
+
+Now you do not have to write `geo::Rect`, just `Rect` - since `geo` has become implicit.
+
+If you look through OpenMono SDK's source code, you will often see these `using` statement at the beginning of header files:
+
+```cpp
+using namespace mono;
+using namespace mono::ui;
+using namespace mono::geo;
+```
+
+This reduces the verbosity of the code, by allowing referencing classes without namespace prefixes.
+
+#### *Using* a single class
+
+Another less invasive option is to import only a specific class into the current context - not a complete namespace. If you now you are only going to need the `geo::Rect` class and not any other class defined in `geo`, you can:
+
+```cpp
+using geo::Rect;
+
+Rect frame;
+```
+
+THis imports only the *Rect* class. This allows you to keep your context clean.
+
+```eval_rs
+.. note:: On a side note, remember that importing namespaces has no effect on performance. C++ is a compiled language, and namespaces does not exist in binary. You can declare and import as many namespaces as you like - the compiled result is not affected on performance.
+```
 
 ## References
 
+C++ introduces an alternative to C pointers, called references. If you know C pointers, you are similiar with the `*` syntax. If you don't, just know that in C you can provide a copy of a variable or a pointer to the variable. (We saw that in the *Buffer* example earlier.)
+
+In C you denote pointer types with an asterisk (`*`). C++ introduces references denotes by an ampersand (`&`), which are somewhat like pointers.
+
+A reference in C++ is constant pointer to another object. This means a reference cannot be re-assigned. It is assigned upon creation, and cannot change later:
+
+```cpp
+Rect frame = Rect(0,0,25,25);
+Rect& copy = frame;
+Rect frm2;
+copy = frm2; // AArgh, compiler error here!!
+```
+
+The `copy` variable is a reference to `frame` - always. In contrast to pointers in C, you do not have to take the address of an variable to assign the reference. C++ handles this behind the scenes.
+
+### Reference in functions
+
+A great place to utilze references in C++ is when defining parameters to functions or methods. et us declare a new method on `Rect` that check if a `Point` is inside the *rects* interior. This method can take a reference to such a point, no reason to copy data back and forth - just pass a reference:
+
+```cpp
+class Rect
+{
+public:
+    // rect of decleration left out
+    bool contains(const Point &pnt)
+    {
+        if (   pnt.x > x && pnt.x <= (x + width)
+            && pnt.y > y && pnt.y <= (y +height))
+            return true;
+        else
+            return false;
+    }
+}
+```
+
+Our method takes a reference to a Point class, as denoted by the ampersand (`&`). Also, we have declared the reference as `const`. This means we will not modify the `pnt` object.
+
+If we left out the `const` keyword, we are allowed to make changes to `pnt`. By declaring it `const` we are restraining yourself from being able to modify `pnt`. This help the C++ compiler create more efficient code.
 
 ## Further reading
 
