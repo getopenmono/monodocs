@@ -84,7 +84,7 @@ various functions
 when it triggers, and then stop and start the `timer` where appropriate.
 Conceptually, I can simply tell `timer` to call a function `autoMove` by
 ```cpp
-timer.setCallBack(autoMove);
+timer.setCallback(autoMove);
 ```
 but because `autoMove` is a C++ class member-function, I need to help out the poor old C++ compiler by giving it information about which object has the
 `autoMove` function, so the incantation will actually be
@@ -105,13 +105,13 @@ void AppController::continueGame ()
         if (winner() == X) topLabel.setText("You win!");
         else topLabel.setText("Mono wins!");
         timer.setCallback<AppController>(this,&AppController::prepareNewGame);
-        timer.Start();
+        timer.start();
     }
     else if (nextToMove == _)
     {
         topLabel.setText("Tie!");
         timer.setCallback<AppController>(this,&AppController::prepareNewGame);
-        timer.Start();
+        timer.start();
     }
     else if (nextToMove == X)
     {
@@ -122,7 +122,7 @@ void AppController::continueGame ()
     {
         topLabel.setText("Thinking...");
         timer.setCallback<AppController>(this,&AppController::autoMove);
-        timer.Start();
+        timer.start();
     }
 }
 ```
@@ -132,7 +132,7 @@ All that is missing now is a `prepareNewGame` function that prompts for a new ga
 ```cpp
 void AppController::prepareNewGame ()
 {
-    timer.Stop();
+    timer.stop();
     topLabel.setText("Play again?");
 }
 ```

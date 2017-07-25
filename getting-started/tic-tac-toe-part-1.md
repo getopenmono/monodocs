@@ -83,14 +83,14 @@ field of the board to respond to touch.
 
 This kind of input and output can in Mono be controlled by the
 [`ResponderView`](http://developer.openmono.com/en/latest/reference/mono_ui_ResponderView.html).
-It is a class that offers a lot of functionality out of the box, and in my case I only need to override two methods, `repaint` for generating the output and `TouchBegin` for receiving input:
+It is a class that offers a lot of functionality out of the box, and in my case I only need to override two methods, `repaint` for generating the output and `touchBegin` for receiving input:
 
 ```cpp
 class TouchField
 :
     public mono::ui::ResponderView
 {
-    void TouchBegin (mono::TouchEvent &);
+    void touchBegin (mono::TouchEvent &);
     void repaint ();
 };
 
@@ -216,7 +216,7 @@ let us hook up each field so that it responds to touch events:
 ```cpp
 using mono::TouchEvent;
 
-void TouchField::TouchBegin (TouchEvent & event)
+void TouchField::touchBegin (TouchEvent & event)
 {
     app->humanMoved(boardX,boardY);
 }

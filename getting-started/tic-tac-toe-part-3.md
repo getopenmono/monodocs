@@ -33,13 +33,13 @@ AppController::AppController ()
 
 void AppController::continueGame ()
 {
-    sleeper.Start();
+    sleeper.start();
     ...
 }
 ```
 
 
-The `sleeper` is a single-shot [Timer](http://developer.openmono.com/en/latest/reference/mono_Timer.html), which means that it will only fire once.  And by calling `Start` on `sleeper` every time the game proceeds in `continueGame`, I ensure that timer is restarted whenever something happens in the game, so that `EnterSleepMode` is only called after 30 seconds of inactivity.
+The `sleeper` is a single-shot [Timer](http://developer.openmono.com/en/latest/reference/mono_Timer.html), which means that it will only fire once.  And by calling `start` on `sleeper` every time the game proceeds in `continueGame`, I ensure that timer is restarted whenever something happens in the game, so that `EnterSleepMode` is only called after 30 seconds of inactivity.
 
 ## It is Better to Fade Out than to Black Out
 
@@ -72,14 +72,14 @@ AppController::AppController ()
 
 void AppController::dim ()
 {
-    dimmer.Stop();
+    dimmer.stop();
     IDisplayController * display = IApplicationContext::Instance->DisplayController;
     for (int i = display->Brightness(); i >= 50; --i)
     {
         display->setBrightness(i);
         wait_ms(2);
     }
-    sleeper.Start();
+    sleeper.start();
 }
 ```
 The `dimmer` timer is started whenever there is progress in the game, and when `dimmer` times out, the `dim` method turns down the [brightness](http://developer.openmono.com/en/latest/reference/mono_display_IDisplayController.html) from the max value of 255 down to 50, one step at a time.
@@ -89,8 +89,8 @@ Oh, I almost forgot, I need to turn up the brightness again when the the dimmer 
 void AppController::continueGame ()
 {
     IApplicationContext::Instance->DisplayController->setBrightness(255);
-    sleeper.Stop();
-    dimmer.Start();
+    sleeper.stop();
+    dimmer.start();
     ...
 }
 
