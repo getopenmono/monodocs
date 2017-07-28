@@ -30,25 +30,83 @@ Also, because our application is driven by user input (UI button pushes), we wil
 
 ## Adding the push button
 
-For starters we add the button that will trigger a quote being sent over HTTP to IFTTT.
+For starters we need to add the button that will trigger a quote being sent over HTTP to IFTTT.
 
-First we include *OpenMono* classes and declare a pointer to a `ButtonView` instance:
+First we include *OpenMono* classes and declare two pointers to a `ButtonView` and `TextLabelView` instances:
 
 ```cpp
-#include <mono.h>
+#include <mono.h>           // include mono library
 
-using namespace mono::ui;
+using namespace mono::ui;   // Add mono namespace
 using namespace mono::geo;
 
-ButtonView *button;
+ButtonView *button;         // create a ButtonView pointer
+TextLabelView *statusLbl;   // a textlabel pointer
 ```
 
-Inside the `setup` function will create the `ButtonView` object and position at the screen center:
+Inside the `setup` function will create (*construct*) the `ButtonView` and `TextLabelView` object and position them on the screen:
 
 ```cpp
 void setup() {
+    // Button
     button = new ButtonView(Rect(20, 80, 176 - 40, 65), "Quote Arnold");
     button->setClickCallback(&handleButton);
     button->show();
+
+    // Text status label
+    statusLbl = new TextLabelView(Rect(10,180,156,35), "Not connected");
+    statusLbl->setAlignment(TextLabelView::ALIGN_CENTER);
+    statusLbl->show();
 }
 ```
+
+We use the *new* syntax since we allocate the objects on the *stack*. This was why we created `button` and `statusLbl` as a pointer types.
+
+We set the button click handler to a function called `handleButton`, which we will define in a moment. Lastly we tell the button to `show()` itself.
+
+We also set the text alignment and content of the *TextLabelView*, before showing it.
+
+Let's add a function for `handleButton` and then try out code:
+
+```cpp
+void handleButton()
+{
+    // we will add content later
+}
+```
+
+Go ahead and compile and *upload* the code, and your should see a button and a text label on Mono's display.
+
+## Starting Wifi
+
+Before we can send any data to IFTTT, we need to connect to Wifi. Luckily in *SDK 1.7.3* we have a new *Wifi* class, that handles wifi initialization. Lets add that to our sketch, a pointer that we initialize in `setup()`:
+
+```cpp
+// button and text is declared here also
+mono::io::Wifi *wifi;
+
+void setup() {
+    // Initialization of button and text left out here
+
+    wifi = new mono::io::Wifi(YOUR_SSID, YOUR_PASSPHRASE);
+    wifi->setConnectedCallback(&networkReady);
+    wifi->setConnectErrorCallback(&networkError);
+}
+```
+
+Notice that our Wifi object takes two callback functions, for handling the **wifi connected* and *connect error* events. Let's declare these two functions and let them change the `statusLbl` to reflect the state:
+
+```cpp
+void networkReady()
+{
+  printf("network ready!\r\n");
+  statusLbl->setText("Connected");
+}
+
+void networkError()
+{
+  statusLbl->setText("Connect Error");
+}
+```
+
+Now, we need to call `connect` on *Wifi* when the button is pushed.
