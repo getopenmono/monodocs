@@ -96,7 +96,7 @@ int calcArea(struct Rect rct)
 }
 ```
 
-In C++, the same function can handle a C++ class, instead of a *struct* - just by removing the `struct` keyword. However, the concept of *object oriented programming* teaches us to do something else.
+If I were to write the same function in C++, I could then use the class `Rect` and not the the `struct`. To rewrite the function to handle the `Rect`, I need only to remove the `struct` keyword and the function would work with C++ class types. However, the concept of *object oriented programming* teaches us to do something else.
 
 We should group functionality and data. That means our *Rect* class should itself know how to calculate its own area. Just like the `Rect` has `width`and `height` properties, it should have an `area` property.
 
