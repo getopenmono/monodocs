@@ -12,7 +12,7 @@ Read on, and we shall take a tour of the basic features and headaches of C++.
 
 Allow me to start off with a ultra brief history lesson in C++. Back in the days it started its life as an extension to C. This means you still have access to all of C from C++. Originally C++ was named *C with Classes*, later the named was changed to C++. The name comes from the *increment by one* operator in C: `++`. The symbolism is to indicate that C++ is C incremented or enhanced.
 
-C++ introduces a set of new language constructs on top of C, and also tighens some *type casting* rules that are looser in C.
+C++ introduces a set of new language constructs on top of C, and also tightens some *type casting* rules that are looser in C.
 
 In this article we will examine the following C++ features:
 
@@ -29,7 +29,7 @@ Let's dive in.
 
 If you ever heard of *object oriented programming*, you might have heard about classes. I believe the idea behind the class concept, is best explained by an example.
 
-Let's say we want to progrmmatically represent a rectangle (the geometric shape, that is). Our rectangle will have the following properties:
+Let's say we want to programmatically represent a rectangle (the geometric shape, that is). Our rectangle will have the following properties:
 
 * X offset (X coordinate of upper left corner)
 * Y offset (Y coordinate of upper left corner)
