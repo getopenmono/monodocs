@@ -4,7 +4,7 @@
 
 ### Who should read this?
 
-I assume that you are similiar with basic C, nothing fancy - just plain `main()` with function calling and *maybe* - *just maybe*, some pointer juggling. Also, if you have coded Arduino and are used to the concepts there - this article is for you!
+I assume that you are familiar with basic C, nothing fancy - just plain `main()` with function calling and *maybe* - *just maybe*, some pointer juggling. Also, if you have coded Arduino and are used to the concepts there - this article is for you!
 
 Read on, and we shall take a tour of the basic features and headaches of C++.
 
