@@ -4,13 +4,13 @@
 
 ### Who should read this?
 
-I assume that you are similiar with basic C, nothing fancy - just plain `main()` with function calling and *maybe* some pointer juggling. Also, if you have coded Arduino and are used to the concept there - this article is for you!
+I assume that you are similiar with basic C, nothing fancy - just plain `main()` with function calling and *maybe* - *just maybe*, some pointer juggling. Also, if you have coded Arduino and are used to the concepts there - this article is for you!
 
-Read on, and we shall introduce the most basic concepts and headaches of C++.
+Read on, and we shall take a tour of the basic features and headaches of C++.
 
 ## Overview
 
-Allow me to start of with a brief introduction to C++. Back in the days it started it life as an extension to C. This means you still have access to all of C from C++.
+Allow me to start off with a ultra brief history lesson in C++. Back in the days it started its life as an extension to C. This means you still have access to all of C from C++. Originally C++ was named *C with Classes*, later the named was changed to C++. The name comes from the *increment by one* operator in C: `++`. The symbolism is to indicate that C++ is C incremented or enhanced.
 
 C++ introduces a set of new language constructs on top of C, and also tighens some *type casting* rules that are looser in C.
 
@@ -18,25 +18,25 @@ In this article we will examine the following C++ features:
 
 1. [Classes](#classes)
 1. [Inheritance](#inheritance)
-1. [Contructors & the rule of 3](#constructors)
-1. [References](#references)
+1. [Contructors](#constructors)
 1. [Namespaces](#namespaces)
-1. [Virtual methods](#virtual-methods)
+1. [References](#references)
+1. [The rule of 3](#the-rule-of-3)
 
 Let's dive in.
 
 ## Classes
 
-If you heard of *object oriented programming*, you might have heard about classes. I believe the idea behind the class concept, is best explained by an example.
+If you ever heard of *object oriented programming*, you might have heard about classes. I believe the idea behind the class concept, is best explained by an example.
 
-Let say we want to progrmmatically represent a rectangle (the geometric shape). Our rectangle will have the following properties:
+Let's say we want to progrmmatically represent a rectangle (the geometric shape, that is). Our rectangle will have the following properties:
 
 * X offset (X coordinate of upper left corner)
 * Y offset (Y coordinate of upper left corner)
 * Width
 * Height
 
-In C code you would normally create a `struct` type that represented the collection of properties like this:
+In C code you should normally create a `struct` type that represents the collection of properties like this:
 
 ```c
 struct Rect {
@@ -71,7 +71,7 @@ public:
 
 Note that apart from the word change from `struct` to `class`, the only difference is the `public` keyword. Do not mind about this know, we shall get back to it.
 
-Now in C++ we have declared the class `Rect`, can we can use it like this:
+Now in C++ we have declared the class `Rect`, and we can use it like this:
 
 ```cpp
 Rect winFrm;
@@ -81,7 +81,7 @@ winFrm.width = 500;
 winFrm.height = 500;
 ```
 
-Notice we just declare the type `Rect`, no need for the any extra keyword, like `struct` in C.
+Notice we just declare the type `Rect`, no need for the extra keyword `struct`, like in C.
 
 What we have in fact created now are an *instance* of our class *Rect*. An instance is also called an *object*.
 
@@ -96,17 +96,24 @@ int calcArea(struct Rect rct)
 }
 ```
 
-Now, the same can be done with a C++ class, instead of a *struct* - just by removing the `struct` keyword. However, the concept of *object oriented programming* teaches something else.
+In C++, the same function can handle a C++ class, instead of a *struct* - just by removing the `struct` keyword. However, the concept of *object oriented programming* teaches us to do something else.
 
 We should group functionality and data. That means our *Rect* class should itself know how to calculate its own area. Just like the `Rect` has `width`and `height` properties, it should have an `area` property.
 
 We *could* define an extra variable in the class, like this:
 
-```c
-int area;
+```cpp
+class Rect {
+public:
+    int x;
+    int y;
+    int width;
+    int height; 
+    int area; // a new area variable
+};
 ```
 
-This would be error prone though, since we have to remember to update this everytime we change `width`or `height`. No, let us instead define `area` as a function that exists on `Rect`. The complete class definition will look like this:
+This would be highly error prone though. Since we have to remember to update this variable everytime we change `width`or `height`. Let us instead define `area` as a function that exists on `Rect`. The complete class definition will look like this:
 
 ```cpp
 class Rect
@@ -122,7 +129,7 @@ public:
 };
 ```
 
-Now our *Rect* class consists of the 4 properties and a function called `area()`, that returns an `int`. A function that is defined on class like this, is called a *method*.
+Now our *Rect* class consists of the 4 variables and a function called `area()`, that returns an `int`. A function that is defined on class like this, is called a *method*.
 
 We can use the *method* like this:
 
@@ -142,7 +149,7 @@ This is the idea of object oriented coding - where data and related functionalit
 
 As promised earlier let us talk briefly about the `public` keyword. C++ lets you protect variables and methods on your classes using 3 keyword: `public`, `protected` and `private`.
 
-So far we only seen *public* in use, because it allows us to access properties from outside the class. However, we can use the other keyword to mark variables as inaccessable from outside the class, like this:
+So far we only seen *public* in use, because it allows us to access variables and methods from outside the class. However, we can use the other keywords to mark variables or methods as inaccessible from outside the class. Take an example like this:
 
 ```cpp
 class CreditCard
@@ -165,33 +172,33 @@ public:
 
 In this example we created the class *CreditCard*, that defines a persons credit card with all the data normally present on a credit card.
 
-Some data is sensitive and we don't want developers to access them without care. Therefore we can use access protection levels to block access to properties from code outside the class itself.
+Some of the variables are sensitive and we don't want developers to carelessly access them. Therefore we can use access protection levels to block access to these from code outside the class itself.
 
 #### Private members
 
-The variable `cardNumber` is marked as *private*. This means it is visible only from inside the *CreditCard* class itself. No outside code or class can reference it. Not even a subclass of *CreditCard* have access to it.
+The variable `cardNumber` is marked as *private*. This means it is visible only from inside the *CreditCard* class itself. No outside code or class can reference it. Not even a *subclass* of *CreditCard* have access to it. (We will get to *subclasses* in the next section.)
 
-You should use *private* properties only when you actively want to block future access to variables or methods. Don't use it if you just can't see any reason not to. The paradigm should be to actively argue that future developers shall never access this property.
+You should use *private* properties only when you actively want to block future access to variables or methods. Don't use it if you just can't see any reason not to. The paradigm should be to actively argue that future developers shall never access this variable or method.
 
 Unfortunately in C++ this is the default access level. If you do not mark your members with *public* or *protected*, they become *private* by default.
 
 #### Protected members
 
-All *protected* variables and methods are inaccessable from outside the class, just like private variables. However, subclasses can access *protected* variable and methods.
+All *protected* variables and methods are inaccessible from outside the class, just like private variables. However, subclasses can access *protected* variables and methods.
 
-If you have a variable the should be shield from outside code, you should mark it as *protected*.
+If you have a variable or method that should be not be accessible from outside code, you should mark it as *protected*.
 
 #### Public members
 
-Public variable and methods are accessable both from outside the class and from subclasses. When a method is *public*, we can call it from outside the class, as we saw done with the `area()` method.
+Public variables and methods are accessible both from outside the class and from subclasses. When a method is *public*, we can call it from outside the class, as we saw done with the `area()` method.
 
 ## Inheritance
 
 Inheritance is classes standing on the shoulders of each other. If classes are one leg of object oriented programming, inheritance are the other.
 
-Let us continue the rectangle example. I have heard about a  trend called 3D graphics! I really want my *Rect* shape to support this extra dimension. At the same time I already use my existing class `Rect` many places in my code, so I cannot modify it.
+Let us continue the rectangle example. I have heard about an exciting new trend called 3D graphics! I really want my *Rect* shape to support this extra dimension. At the same time I already use my existing class `Rect` many places in my code, so I cannot modify it.
 
-The first thought is to just reimplement the class as a 3D shape. Unfortunately my code is open source and I do not want to loose any *street cred* by not following the DRY (Don't Repeat Yourself) paradigm.
+My first thought is to just reimplement the class as a 3D shape. Unfortunately my code is open source and I do not want to loose any *street cred* in the community, by not following the *[DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)* (Don't Repeat Yourself) paradigm.
 
 It is now inheritance comes to the rescue. We can use it to create a new class `Rect3D` that builds upon the existing `Rect` class, reusing the code and extending the functionality:
 
@@ -209,11 +216,11 @@ public:
 }
 ```
 
-See the colon at the first line? It defines that our `Rect3D` class inherits from `Rect`. We say that `Rect3D` is a *subclass* of `Rect`.
+See the colon at the first line? It defines that our `Rect3D` class inherits from `Rect`. We say that `Rect3D` is a *subclass* of `Rect` and that `Rect` is the *parent class* of `Rect3D`.
 
-The magic here is the variables `x`, `y`, `width` and `height` now exists on `Rect3D` through inheritance. Same is true for the methods `area()`.
+The magic here is the variables `x`, `y`, `width` and `height` now exists on `Rect3D` through inheritance. The same is true for the method `area()`.
 
-Inheritance takes all methods and variables (also called properties) at makes them present on subclasses.
+Inheritance takes all methods and variables (also called properties) and makes them present on subclasses.
 
 The `public` keyword instructs that *public* members on the parent class are still *public* on the subclass.
 
@@ -239,7 +246,7 @@ Now we have two classes, where one (Rect3D) inherits from the other (Rect). Our 
 
 ### Overloading methods
 
-Luckily for us, we denote area and volume different. This meant that the method `volume()` in `Rect3D` does not conflict with the exitsing method `area()`. We are not always that lucky.
+Luckily for us, we denote area and volume different. This means that the method `volume()` in `Rect3D`, does not conflict with the exitsing method `area()`. However, we are not always that lucky.
 
 Say we had added a method that calculated the surface area of the shape. In the two dimensional *Rect* the surface and *area* are the same, so a `surface()` method is trivial:
 
@@ -252,7 +259,7 @@ int surface()
 
 Our method simply calls the existing `area()` method and returns its result. But now *Rect3D* inherits this behaviour - which is incorrect in three dimensions.
 
-To get the suface area of a cube we must calculate the area of each side, and sum for all sides. We use *method overloading* to re-declare the same method on `Rect3D`:
+To get the surface area of a cube we must calculate the area of each side, and sum for all sides. We use *method overloading* to re-declare the same method on `Rect3D`:
 
 ```cpp
 int surface()
@@ -263,7 +270,7 @@ int surface()
 }
 ```
 
-Now both classes declare a method with the same name and arguments. The effect is `Rect3D`'s `surface()` method replaces the method on the parent class.
+Now both classes declare a method with the same name and arguments. The effect is `Rect3D`'s `surface()` method replaces the method on its *parent class*.
 
 A complete exmaple of the code is:
 
@@ -299,7 +306,7 @@ public:
 
 ### Multiple inheritance
 
-In C++ your classes can actually inherit from more than one class. This is called multiple inheritance. Let us examplify this by breaking up our *Rect* into two classes: *Point* and *Size*:
+Classes in C++ can, as in nature, inherit from more than one parent class. This is called multiple inheritance. Let us examplify this by breaking up our *Rect* into two classes: *Point* and *Size*:
 
 ```cpp
 class Point
@@ -329,19 +336,19 @@ class Rect : public Point, public Size
 };
 ```
 
-Our new *Rect* class does not define anything on it own, it simple stand on the shoulders of both *Point* and *Size*.
+Our new *Rect* class does not define anything on its own, it simply stands on the shoulders of both *Point* and *Size*.
 
 #### Inbreeding
 
 When using multiple inheritance you should be aware of what is called the *diamond problem*. This occurs when your class inherits from two classes with a common ancestor.
 
-In our geometry example, we could introduce this diamond problem be letting both `Point` and `Size` inherit from a common parent class, say one called: `Shape`.
+In our geometry example, we could introduce this diamond problem by letting both `Point` and `Size` inherit from a common parent class, say one called: `Shape`.
 
 In C++ there are ways around this issue called *virtual inheritance*, it is an advanced topic though. In this article we will not go into detail about this - you should just know that the problem is solvable.
 
 ## Constructors
 
-A *constructor* is a special method on a class that get called automatically when the class in created. Constructors often initialize default values of member variables.
+A *constructor* is a special method on a class that gets called automatically when the class in created. Constructors often initialize default values of member variables.
 
 When we develop for embedded systems, we cannot assume variable values are initialized to 0, upon creation. For this reason we want to explicitly set all variables of our `Rect` class to 0:
 
@@ -365,10 +372,10 @@ public:
 };
 ```
 
-Notice the special *contructor* method `Rect()` has no return type - not even `void`! Now we have created a constructor that sets all member variable to zero, so we ensure they are not random when we create an instance of `Rect`:
+Notice the special *contructor* method `Rect()` has no return type - not even `void`! Now we have created a constructor that sets all member variables to zero, so we ensure they are not random when we create an instance of `Rect`:
 
 ```cpp
-Rect bound;
+Rect bounds;
 int size = bounds.area(); // gives 0
 ```
 
@@ -378,7 +385,7 @@ When a constructor takes no arguments, as our, it is called the *default constru
 
 ### Non-default Constructors
 
-We can declare multiple constructors for our class in C++. Constructor can take parameters, just as function can.
+We can declare multiple constructors for our class in C++. Constructors can take parameters, just as functions can.
 
 Let us add another constructor to *Rect* that takes all the member variables as parameters:
 
@@ -407,7 +414,7 @@ public:
 };
 ```
 
-Now we have a special constructor that initializes a Rect object with a provided set of values. Such contructors are very convenience, and makes our code less verbose:
+Now we have a special constructor that initializes a `Rect` object with a provided set of values. Such contructors are very convenient, and make our code less verbose:
 
 ```cpp
 Rect bounds; // default constructor inits to 0 here
@@ -420,173 +427,15 @@ bounds.height = 75;
 Rect frame(10,10, 75, 75);
 ```
 
-When you call a special constructor like `Rect(10,10,75,75)` the *default constructor* is *not* executed! In C++ only one constructor can be executed, they can not be chained.
-
-### The rule of 3
-
-I shall briefly touch the *Rule of Three* concept, though it is beyond the scope of this article.
-
-When you assign objects in C++ its contents is automatically copied to the destination variable:
-
-```cpp
-Rect rct1(5,5,10,10); // special constructor
-Rect rct2; // default constructor
-rct2 = rct1; // assignment, rct1 is copied to rct2
-```
-
-All of *Rect* member variables are automatically copied by C++. This is mostly fine, but there are times when you need or want special behaviour. For example is we create a *buffer* class we might not want to copy memory back and forth.
-
-```cpp
-class Buffer
-{
-public:
-    bool isOriginal;
-    char *data;
-
-    Buffer()
-    {
-        isOriginal = false;
-        data = 0;
-    }
-
-    Buffer(char *ptr, int size)
-    {
-        isOriginal = true;
-        data = malloc(size)
-        memcpy(data, ptr, size);
-    }
-};
-```
-
-In this case, if we assign an instance of `Buffer` from one variable to another, all data (10,000 bytes) is copied and takes up memory. It would be better of two instances of *Buffer* could share the same data.
-
-To achieve this, we must overwrite two implicit defined methods in C++. They are the *copy constructor* and the *assignment operator*.
-
-#### The Copy Constructor
-
-The copy constructor is a special constructor that takes an instance of an object and initializes itself as a copy. C++ calls the *copy constructor* when creating a new variable from an existing one. These are common examples:
-
-```cpp
-Rect frame(0,0,100,100); // special constructor
-Rect frame2 = frame; // copy constructor
-someFunction(frame); // copy constructor again
-```
-
-When we create a new instance by assigning an existing object the *copy constructor* is used. Further, is we have a function or method and takes a class type as parameter, the function is provided a copy of the object by the *copy contructor*.
-
-To create your own copy constructor you define it like this:
-
-```cpp
-class Rect
-{
-public:
-    // copy constructor
-    Rect(const Rect &other)
-    {
-        x = other.x;
-        y = other.y;
-        width = other.width;
-        height = other.height;
-    }
-};
-```
-
-We left out the other constructor, and members in this example. The *copy constructor* is constructor method that takes a `const` reference to another instance of its class.
-
-Of the *rect* class we just copy all variables. This also the default behaviour of C++, if we had not defined any *copy constructor*. However, in the *Buffer* example, our *copy constructor* culd like this:
-
-```cpp
-class Buffer
-{
-public:
-    //copy constructor
-    Buffer(const Buffer &other)
-    {
-        isOriginal = false;
-        data = other.data;
-    }
-};
-```
-
-Now the *copy contructor* does not copy the class contents. It just assigns the pointer to the data to the new instance. This means the two existing instances (the copy and the original), share the same data array.
-
-#### The Assignment Operator
-
-There is still a case where C++ will copy all the contents of *Buffer*. It is where the *implicit* or default *assignment operator* is used. And this occurs in when:
-
-```cpp
-Buffer buf1(existingData); // special constructor
-Buffer buf2; // default constructor
-buf2 = buf1; // assignment operator
-```
-
-Here we create a instance with some data `buf1`, and a zeroed instance `buf2`. If we want the same behaviour as with the *copy constructor*, we need to declare the *assignment operator* on *Buffer*:
-
-```cpp
-class Buffer
-{
-public:
-    // assignment operator
-    Buffer& operator=(const Buffer &rhs)
-    {
-        isOriginal = false;
-        data = rhs.data;
-        return *this;
-    }
-};
-```
-
-Just like the *copy constructor*, the assignment operator takes a `const` reference to the object that need to be assigned (copied). But it assignment must also return a reference of itself, as defined by `Buffer&`. This is also why we have to include the `return *this` statement. `this` is a pointer to the instance of the class - the object itself.
-
-Any C pointer juggling champ, will recognize that we derererence the pointer by adding the asterisk (`*`) in front.
-
-#### The Deconstructor
-
-This is the last part of the *Rule of Three* in C++.
-
-THe *deconstructor* is the inverse of the constructor - it is called when an object dies or rather is deallocated. Object gets deallocated when the go out of scope.
-
-In our *Buffer* example we want the *deconstructor* to free any allocated memory - but only if the object is the original data owner:
-
-```cpp
-class Buffer
-{
-public:
-    bool isOriginal;
-
-    //the deconstructor
-    ~Buffer()
-    {
-        if (isOriginal) {
-            free(data);
-        }
-    }
-};
-```
-
-The *deconstructor* is defined as the classname with a tilde (`~`) in front. A deconstructor takes no arguments.
-
-Now you see why we declared the `isOriginal` variable earlier. We must not `free` memory we do not own. This means all the copies can dealloc with data still present. Only deallocing the original will flush the data content.
-
-```eval_rst
-.. note:: I am aware that deallocing the original before any of the copies will leaves dangling pointers to freed data. We have implement a quite crude data management system here, but it can easily be augmented to be a working reference counting implementation.
-```
-
-Now this is the rule of three. Defining the:
-
-* *copy constructor*
-* *assignment operator*
-* *deconstructor*
-
-When you create your own C++ classes, think about these three. Mostly you don't have to implement them, but in some cases you will.
+When you call a special constructor like `Rect(10,10,75,75)` the *default constructor* is *not* executed! In C++ only one constructor can be executed, they can not be daisy chained.
 
 ## Namespaces
 
-When developing your application you might choose class names that already existing in the system. say you create a class called *String*, changes are that this name is taken by the systems own *String class*. In deed this is the case in OpenMono SDK.
+When developing your application you might choose class names that already exists in the system. Say you create a class called *String*, changes are that this name is taken by the system's own *String class*. Indeed this is the case in OpenMono SDK.
 
 To avoid name collisions for common classes such as *Array*, *String*, *Buffer*, *File*, etc. C++ has a feature called *namespaces*.
 
-A *namespace* is a grouping of names, inside a named container.  All OpenMono classes provided by the SDK is defined inside a *namespace* called `mono`. You can use double colens to reference classes inside namespaces:
+A *namespace* is a grouping of names, inside a named container. All OpenMono classes provided by the SDK is defined inside a *namespace* called `mono`. You can use double colons to reference classes inside namespaces:
 
 ```cpp
 mono::String str1;
@@ -598,7 +447,7 @@ Here we define instances (using the *default constructor*) that are declared ins
 
 ### Declaring namespaces
 
-So far we have seen only classes declared in global space. That is outside any namespace. Say, we want to group all our geometric classes in a namespace called `geo`.
+So far in this guide, we have only seen classes declared in global space. That is outside any namespace. Say, we want to group all our geometric classes in a namespace called `geo`.
 
 Then *Rect* would be declared as such:
 
@@ -616,7 +465,7 @@ namespace geo {
 
 Now, any code inside the `namespace geo { ... }` curly braces can reference the class `Rect` by its name. However, any code outside the namespace must define the namespace as well as the class name: `geo::Rect`.
 
-Namespaces can contains other namespaces. We can create a new namespace inside `geo` called `threeD`. Then we can rename `Rect3D` to `Rect` and declare it inside the `threeD` namespace:
+Namespaces can contains other namespaces. We can create a new namespace inside `geo` called `threeD`. Then, we can rename `Rect3D` to `Rect` and declare it inside the `threeD` namespace:
 
 ```cpp
 namespace geo {
@@ -665,19 +514,19 @@ using geo::Rect;
 Rect frame;
 ```
 
-THis imports only the *Rect* class. This allows you to keep your context clean.
+This imports only the *Rect* class. This allows you to keep your context clean.
 
-```eval_rs
-.. note:: On a side note, remember that importing namespaces has no effect on performance. C++ is a compiled language, and namespaces does not exist in binary. You can declare and import as many namespaces as you like - the compiled result is not affected on performance.
+```eval_rst
+.. tip:: On a side note, remember that importing namespaces has no effect on performance. C++ is a compiled language, and namespaces does not exist in binary. You can declare and import as many namespaces as you like - the compiled result is not affected on performance.
 ```
 
 ## References
 
-C++ introduces an alternative to C pointers, called references. If you know C pointers, you are similiar with the `*` syntax. If you don't, just know that in C you can provide a copy of a variable or a pointer to the variable. (We saw that in the *Buffer* example earlier.)
+C++ introduces an alternative to C pointers, called references. If you know C pointers, you are familiar with the `*` syntax. If you don't, just know that in C you can provide a copy of a variable or a pointer to the variable.
 
-In C you denote pointer types with an asterisk (`*`). C++ introduces references denotes by an ampersand (`&`), which are somewhat like pointers.
+In C you denote pointer types with an asterisk (`*`). C++ introduces references denoted by an ampersand (`&`), which are somewhat like pointers.
 
-A reference in C++ is constant pointer to another object. This means a reference cannot be re-assigned. It is assigned upon creation, and cannot change later:
+A reference in C++ is constant pointer to another object. This means a reference cannot be re-assigned. It is assigned upon creation, and cannot be changed later:
 
 ```cpp
 Rect frame = Rect(0,0,25,25);
@@ -690,13 +539,14 @@ The `copy` variable is a reference to `frame` - always. In contrast to pointers 
 
 ### Reference in functions
 
-A great place to utilze references in C++ is when defining parameters to functions or methods. et us declare a new method on `Rect` that check if a `Point` is inside the *rects* interior. This method can take a reference to such a point, no reason to copy data back and forth - just pass a reference:
+A great place to utilze references in C++ is when defining parameters to functions or methods. Let us declare a new method on `Rect` that check if a `Point` is inside the *rectangles* interior. This method can take a reference to such a point, no reason to copy data back and forth - just pass a reference:
 
 ```cpp
 class Rect
 {
 public:
-    // rect of decleration left out
+    // rest of decleration left out
+
     bool contains(const Point &pnt)
     {
         if (   pnt.x > x && pnt.x <= (x + width)
@@ -708,20 +558,143 @@ public:
 }
 ```
 
-Our method takes a reference to a Point class, as denoted by the ampersand (`&`). Also, we have declared the reference as `const`. This means we will not modify the `pnt` object.
+Our method takes a reference to a *Point* class, as denoted by the ampersand (`&`). Also, we have declared the reference as `const`. This means we will not modify the `pnt` object.
 
-If we left out the `const` keyword, we are allowed to make changes to `pnt`. By declaring it `const` we are restraining yourself from being able to modify `pnt`. This help the C++ compiler create more efficient code.
+If we left out the `const` keyword, we are allowed to make changes to `pnt`. By declaring it `const` we are restraining ourselves from being able to modify `pnt`. This help the C++ compiler create more efficient code.
+
+## The rule of 3
+
+I shall briefly touch the *Rule of Three* concept, though it is beyond the scope of this article.
+
+When you assign objects in C++ its contents is automatically copied to the destination variable:
+
+```cpp
+Rect rct1(5,5,10,10); // special constructor
+Rect rct2; // default constructor
+rct2 = rct1; // assignment, rct1 is copied to rct2
+```
+
+All of *Rect* member variables are automatically copied by C++. This is fine 90% of the time, but there are times when you need or want special behaviour. Often in these cases a advanced behaviour is needed, for example to implement [reference counting](https://en.wikipedia.org/wiki/Reference_counting) or similar.
+
+As an example here, we just want to modify our `Rect` class to print to the console everytime it is copied.
+
+To achieve this, we must overwrite two implicit defined methods in C++. These are the *copy constructor* and the *assignment operator*.
+
+### The Copy Constructor
+
+The *copy constructor* is a special constructor that takes an instance of an object and initializes itself as a copy. C++ calls the *copy constructor* when creating a new variable from an existing one. These are common examples:
+
+```cpp
+Rect frame(0,0,100,100); // special constructor
+Rect frame2 = frame; // copy constructor
+someFunction(frame); // copy constructor again
+```
+
+When we create a new instance by assigning an existing object the *copy constructor* is used. Further, if we have a function or method and takes a class type as parameter, the function is provided with a fresh copy of the object by the *copy contructor*.
+
+To create your own copy constructor you define it like this:
+
+```cpp
+class Rect
+{
+public:
+    // copy constructor
+    Rect(const Rect &other)
+    {
+        x = other.x;
+        y = other.y;
+        width = other.width;
+        height = other.height;
+
+        printf("Hello from copy constructor");
+    }
+};
+```
+
+We left out the other constructors, and members in this example. The *copy constructor* is a constructor method that takes a `const` reference to another instance of its class.
+
+In the *Rect* class we copy all variables (the default behaviour of C++, if we had not defined any *copy constructor*) and prints a line to the console.
+
+This serves to demonstrate that you can define exactly what it means to assign your class to a new variable. You can make your new object a shallow copy of the original or change some shared state.
+
+### The Assignment Operator
+
+There is still the other case: *assignment oprator*. It is where the default *assignment operator* is used. The default *assignment operator* occurs when:
+
+```cpp
+Rect view(10,10,100,100); // convenient constructor
+Rect bounds;   // default constructor
+bounds = view; // assignment operator
+```
+
+Here we create a instance with some rectangle `view`, and a zeroed instance `bounds`. If we want the same behaviour as with the *copy constructor*, we need to declare the *assignment operator* on `Rect`:
+
+```cpp
+class Rect
+{
+public:
+    // rest of class content left out
+
+    // assignment operator
+    Rect& operator=(const Rect &rhs)
+    {
+        x = rhs.x;
+        y = rhs.y;
+        width = rhx.width;
+        height = rhs.height;
+
+        printf("Hello from assignment operator");
+        return *this;
+    }
+};
+```
+
+Just like the *copy constructor*, the assignment operator takes a `const` reference to the object that need to be assigned (copied). But its assignment must also return a reference of itself, as defined by `Rect&`. This is also why we have to include the `return *this` statement. In C++ `this` is a pointer to the instance of the class - the object itself.
+
+A C pointer juggling champ, will recognize that we dereference the pointer by adding the asterisk (`*`) in front.
+
+Just as is the case with the *copy constructor*, we can now define the assignment behavior of `Rect`. Here (again), it is illustrated by printing to the console upon assignment.
+
+### The Deconstructor
+
+This is the last part of the *Rule of Three* in C++.
+
+THe *deconstructor* is the inverse of the constructor - it is called when an object dies or rather - is deallocated. Objects get deallocated when they go out of scop. As is the case when a function or method returns.
+
+To follow our previous examples we want the *deconstructor* to just print to the console.
+
+```cpp
+class Rect
+{
+public:
+    // rest of class content is left out
+
+    //the deconstructor
+    ~Rect()
+    {
+        printf("Hello from the de-constructor");
+    }
+};
+```
+
+The *deconstructor* is defined as the class' name with a tilde (`~`) in front. A deconstructor takes no arguments.
+
+Now this is the rule of three. Defining the:
+
+* *copy constructor* : `Class(const Class &other)`
+* *assignment operator* : `Class& operator=(const CLass &rhs)`
+* *deconstructor* : `~Class()`
+
+When you create your own C++ classes, think about these three. Mostly you don't have to implement them, but in some cases you will.
 
 ## Further reading
 
-C++ is an admittedly an avanced and tough language. I still bang my head against the wall sometimes. More modern languages like Java and C# are easier to use. But in an embedded environment we run have the luxuary of a large runtime. So for now, we are left with C++.
+C++ is an admittedly an avanced and tough language. I still bang my head against the wall sometimes. More modern languages like Java and C# are easier to use, but in an embedded environment we don't have the luxuary of a large runtime. So for now, we are left with C++.
 
 There are still a ton of topics that I did not cover here. I'd like to encourage you to read about these more advanced topics:
 
-* Static variables
-* Static methods
-* Operator overloads
-* Constant methods
-* Interfaces
-* Virtual methods
-* Polymorhpism
+* [Static variables & methods](http://www.cprogramming.com/tutorial/statickeyword.html)
+* [Operator overloads](http://en.cppreference.com/w/cpp/language/operators)
+* [Constant methods](https://isocpp.org/wiki/faq/const-correctness#const-member-fns)
+* [Interfaces](https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm)
+* [Virtual methods / Polymorhpism](http://www.geeksforgeeks.org/polymorphism-in-c/)

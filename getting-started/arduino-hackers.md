@@ -1,10 +1,10 @@
 # Mono for Arduino Hackers
 
-***You can use the familiar Arduino IDE to build Mono applications. This guide will take you through the steps.***
+***You can use the familiar Arduino IDE to build Mono applications. This guide will take you through the steps of how to do this.***
 
 ## Prerequisites
 
-First I expect you are familiar with Arduino, its coding IDE and the API's like `pinMode()` etc. I also assume that you have the IDE installed, and it is version 1.6.7 or above. You do not have to follow any other of the getting started guides. Arduino IDE development for Mono is completely independed. If this is the first Mono guide you read, it is all good.
+I assume you are familiar with Arduino, its coding IDE and the API's like `pinMode()` etc. I also assume that you have the IDE installed, and it is version 1.6.7 or above. You do not have to follow any other of the getting started guides. Arduino IDE development for Mono is completely independed. If this is the first Mono guide you read, it is all good.
 
 ## Overview
 
@@ -155,7 +155,15 @@ Now, if you build and run the application the text will be a fancy color and cen
 
 ![Hello World Mono app](arduino_hello_world.png)
 
-## A quick note on namespaces
+## C++ from Arduino IDE
+
+Even tough Arduino is actually coded in C++, the C++ features are not utilized (that much). Some programmers might think they code in C, and not C++ - which is to some extend correct. Still, Arduino IDE uses the C++ compiler.
+
+In Mono's SDK we use the C++ feature set more extensively. This means that C developers might see unfamiliar *keywords* or syntax constructs, like `new` and `::`.
+
+If you are not familiar with C++, I urge you to read our [C programmer's guide to C++](../articles/c-program-guide-cpp.md). This guide is a brief tour of C++ explained for C developers.
+
+<!-- ## A quick note on namespaces
 
 If find yourself wondering about what this is: `mono::ui::`, then read on. Everybody else - you can skip this section.
 
@@ -208,11 +216,13 @@ Now, instead of accessing classe by `mono::String`, you just write `String`, the
 Now you can implicit access classes from 3 different namespaces!
 
 *Note*: The classes are not imported or loaded into the global context (like in Python), C++ does not work that way. It is just a short hand convenience feature, to make the code less verbose.
+-->
 
 ## Further reading
 
 Now you know how to build mono applications from the Arduino IDE. You might what dive into the native API and build system, or reading one of the in-depth articles:
 
+* [C programmer's guide to C++](../articles/c-program-guide-cpp.md) : How C++ differs from good old C
 * [Install the native framework](install.md) : Install the native mono build system
 * [Architectural Overview](../articles/architectural-overview.md) : About application lifecycles and structure.
 
