@@ -1,12 +1,21 @@
 # Mono Developer Documentation
 
-**_Skip all the talking and just start off with: [Getting started installing the framework](getting-started/install.md), and you are already half way._**
+**This is the developer resources for OpenMono SDK. You can find getting started tutorials, downloads, background articles and API references.**
 
-### What to find here?
+<h4>Quick Links:</h4>
+<center>
+<a href="getting-started/install.html" class="btn btn-neutral"><span class="fa fa-cloud-download"></span> Install SDK</a>
+<a href="getting-started/hello_world.html" class="btn btn-neutral"><span class="fa fa-code"></span> Hello World Tutorial</a>
+<a href="getting-started/arduino-hackers.html" class="btn btn-neutral"><span class="fa fa-microchip"></span> Using Arduino IDE</a>
+</center>
 
-Here on our developer site, we collect all learning resources about mono. You will find initial getting started guides, followed by tutorials on specific topics, in-depth articles and last (but not least) the API reference docs.
+```eval_rst
+.. image:: sdk.png
+    :align: center
+    :height: 300px
+```
 
-We prioritize to get as much text published fast, instead of keeping our cards close. We hope you like our desicion. Anyway - should you encounter anything you would like to correct - see: [Contributing](#contribute)
+
 
 ## Content
 
@@ -19,9 +28,17 @@ We prioritize to get as much text published fast, instead of keeping our cards c
  * [API Reference](reference/reference.md)
  * [Release Notes](release-notes/index.md)
 
-### Direct Download
+<!-- ### What to find here?
+
+Here on our developer site, we collect all learning resources about mono. You will find initial getting started guides, followed by tutorials on specific topics, in-depth articles and last (but not least) the API reference docs.
+
+We prioritize to get as much text published fast, instead of keeping our cards close. We hope you like our deciscion. Anyway - should you encounter anything you would like to correct - see: [Contributing](#contribute)
+-->
+
+<!-- ### Direct Download
 
 Go straight to our download page: [Download SDKs](downloads/index.md)
+-->
 
 ### Implementation status
 
