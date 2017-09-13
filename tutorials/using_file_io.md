@@ -6,7 +6,7 @@ Mono has a Micro SD Card slot and currently supports communicating with an SD ca
 
 ## Get an SD Card
 
-First order of business is for you to obtain a MicroSD Card and format in good ol' FAT32. Then insert the card into Mono's slot and fire up a new project:
+First order of business is for you to obtain a MicroSD Card and format it in good ol' FAT32. Then insert the card into Mono's slot and fire up a new project:
 
 ```
 $ monomake project fileIO --bare
@@ -25,18 +25,19 @@ Now `cd` into the `fileIO` directory and open the code files in your favourite c
 
 ## Initalizing the SD Card
 
-At this time we have yet to create a real abstraction layer for the file system initialization. Until we do, you need to initialize the SD card communication yourself. Therefore open *app_controller.h* and add these lines:
+Open *app_controller.h* and add these lines:
 
 ```cpp
 	#include <mono.h>
-	// import the SD and FS definitions
-	#include <SDFileSystem.h>
+
+	// import the SD card and FS definitions
+	#include <io/file_system.h>
 	#include <stdio.h>
 
 	class AppController : public mono::IApplication {
 	public:
 
-		SDFileSystem fs; // create an instance of the FS I/O
+		mono::io::FileSystem fs; // create an instance of the FS I/O
 
     	AppController();
 ```
@@ -45,12 +46,12 @@ Here we include the definitions for the both the SD card I/O and the file I/O. N
 
 ```cpp
 	AppController::AppController() :
-		fs(SD_SPI_MOSI, SD_SPI_MISO, SD_SPI_CLK, SD_SPI_CS, "sd")
+		fs("sd")
 	{
 	}
 ```
 
-Here we initialize the file system and provide the library with the SPI lines for communicating with the SD Card. The last parameter `"sd"` is the mount point. This means the SD Card is mounted at `/sd`.
+Here we initialize the file system and provide the library for communicating with the SD Card. The parameter `"sd"` is the mount point. This means the SD Card is mounted at `/sd`.
 
 ## Writing to a file
 
@@ -125,9 +126,3 @@ These include:
 When you for example read or write from the serial port (using `printf`), you in fact just use the `stdout` and `stdin` global pointers. (`stderr` just maps to `stdout`.)
 
 See the API for the stdlib file I/O here: [www.cplusplus.com/reference/cstdio](http://www.cplusplus.com/reference/cstdio/)
-
-## SD Card and sleep
-
-Currently the SD card file system library do not support sleep mode. When you wake from sleep the SD card have been reset, since its power source has been off while in sleep.
-
-This means you cannot do any file I/O after waking from sleep. Until we fix this you need to reset Mono to re-enable file I/O.
