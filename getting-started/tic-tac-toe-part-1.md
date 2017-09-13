@@ -6,7 +6,7 @@ game.
 ## Anatomy of a Mono application
 
 Mono apps can be written inside the Arduino IDE, but if you really want be a pro, you can write
-Mono apps directly in C++.  For that you will need to implement an `AppController` with at least three functions.  So I will start there, with my `app_controller.h` header file:
+Mono apps directly in C++.  For that you will need to implement an `AppController` with at least three functions. So I will start there, with my `app_controller.h` header file:
 
 ```cpp
 #include <mono.h>
@@ -122,7 +122,7 @@ the geometric classes [`Point`](http://developer.openmono.com/en/latest/referenc
 underlying functionality it inherits from `ResponderView`.  The `ResponderView` is a subclass of
 [`View`](http://developer.openmono.com/en/latest/reference/mono_ui_View.html), and all Views have a
 [DisplayPainter](http://developer.openmono.com/en/latest/reference/mono_display_DisplayPainter.html)
-named `painter` that takes care of actually putting pixel on the screen:
+named `painter` that takes care of actually putting pixels on the screen:
 
 
 ```cpp
@@ -159,7 +159,7 @@ void TouchField::repaint ()
 
 Above, I use the View's `viewRect` to figure out where to draw.  The `viewRect` defines the View's
 position and size on the screen, and its methods `X()`, `Y()`, `X2()`, and `Y2()` give me the screen coordinates of the View.  The method `Position()` is just a shortcut to get X() and Y() as
-a Point.
+a `Point`.
 
 With respect to the board, I index multidimensional arrays by [row-major
 order](https://en.wikipedia.org/wiki/Row-major_order) to please you old-school C coders out there.

@@ -113,14 +113,13 @@ The complete code added to the project global context and in the `setup()` funct
 
 ```cpp
 #include <mono.h>                 // 1
-#include <app_controller.h>       // 2
 
-mono::ui::TextLabelView textLbl;  // 3
+mono::ui::TextLabelView textLbl;  // 2
 
 void setup() {
-  textLbl = mono::ui::TextLabelView(mono::geo::Rect(30, 73, 176, 20), "Hi, I'm Mono");  // 4
-  textLbl.setTextColor(WhiteColor);                                                     // 5
-  textLbl.show();                                                                       // 6
+
+  textLbl = mono::ui::TextLabelView(mono::geo::Rect(30, 73, 176, 20), "Hi, I'm Mono");  // 3
+  textLbl.show();               // 4
 }
 
 void loop() {
@@ -130,11 +129,9 @@ void loop() {
 I have numbered the interesting source code lines, let go through them one by one:
 
 1. We include the Mono Framework, to have access to Mono's API.
-2. Include refences to the default AppController object
-3. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
-4. Construct a *TextLabelView* with a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(30,73)$`` and dimension ``$(176,20)$``.  In the constructors second parameters we set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
-5. Because the screen on the Arduino template app is black, we need to tell the label to use a *White* text color.
-6. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
+1. Here we define the global *TextLabel* object called `textLbl`. Because it is global it will stick around and not be deallocated.
+1. Construct a *TextLabelView* with a rectangle object ([Rect](../reference/mono_geo_Rect.md)), and give the position ``$(30,73)$`` and dimension ``$(176,20)$``.  In the constructors second parameters we set the text content on the *TextLabel*. This is the text that will be displayed on the screen.
+1. We tell the *TextLabel* to render itself on the screen. All UI widgets are hidden by default. You must call `show()` to render them.
 
 Now you can press the compile button (<i class="fa fa-check"></i>) and see the code compiles. If you have Mono connected you can upload the application by pressing the <i class="fa fa-arrow-circle-right"></i> button.
 
@@ -162,61 +159,6 @@ Even tough Arduino is actually coded in C++, the C++ features are not utilized (
 In Mono's SDK we use the C++ feature set more extensively. This means that C developers might see unfamiliar *keywords* or syntax constructs, like `new` and `::`.
 
 If you are not familiar with C++, I urge you to read our [C programmer's guide to C++](../articles/c-program-guide-cpp.md). This guide is a brief tour of C++ explained for C developers.
-
-<!-- ## A quick note on namespaces
-
-If find yourself wondering about what this is: `mono::ui::`, then read on. Everybody else - you can skip this section.
-
-C++ uses namespaces to encapsulate class names, minimizing the risk of conflicting names. If you for example define a class called `Stream`, you like likely get a compiler error. This is because Arduino already have a class called `Stream` - the name is already taken.
-
-To avoid this situation we defined all Mono classes inside a *namespace*, meaning that we exists inside a enclosed context:
-
-```cpp
-
-	namespace mono {
-		class String;
-		class Stream;
-		class WhatEver;
-	}
-```
-
-You access classes inside a namespace by prepending the namespace to the class name like this: `mono::String`. Namespaces can be nested like this:
-
-```cpp
-
-	namespace mono {
-		namespace display {
-			class Color;
-		}
-		
-		namespace ui {
-			class TextLabelView;
-		}
-	}
-```
-
-### Importing into global context
-
-You can import a namespace into the global context, to avoid prepending all mono classes with `mono::`, by the `using` keyword:
-
-```cpp
-
-	using namespace mono;
-```
-
-Now, instead of accessing classe by `mono::String`, you just write `String`, the `mono::` has become implcit. You can import multiple namespaces into the global context by:
-
-```cpp
-	
-	using namespace mono;
-	using namespace mono::ui;
-	using namespace mono::display;
-```
-
-Now you can implicit access classes from 3 different namespaces!
-
-*Note*: The classes are not imported or loaded into the global context (like in Python), C++ does not work that way. It is just a short hand convenience feature, to make the code less verbose.
--->
 
 ## Further reading
 
