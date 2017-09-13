@@ -5,7 +5,7 @@
 Mono's touch system is implemented as a responder chain. That means touch input are events traveling down a chain of *responders*, until one decides to act on the event. A *responder* is simply an object that can handle touch events. Responders are not required to act upon a touch event, they can ignore them if they wish. All responsers must subclass from the [`TouchResponder`](../reference/mono_TouchResponder.html) class.
 
 ```eval_rst
-.. note:: In this tutorial I assume you are somewhat familiar with C++. If you are not, you might wondor more about syntax than about what is happening. I would suggest you read this first: `Bare Metal C++: A Practical Guide <https://www.gitbook.com/book/arobenko/bare_metal_cpp/>`_.
+.. note:: In this tutorial I assume you are somewhat familiar with C++. If you are not, you might wonder more about syntax than about what is really happening. I would suggest you read our article `The C programmers guide to C++ <../articles/c-program-guide-cpp.html>`_ first.
 ```
 
 ## A simple Touch Response
@@ -135,7 +135,7 @@ The *ResponderView* requires you to overload 3 methods, that differ from the one
 
 These methods are triggered only if the touch are inside the *view rect*. Further, the [`TouchEvent`](../reference/mono_TouchEvent.html) reference they provide are converted to display coordinates for you. This means these are in pixels, and not raw touch values.
 
-If wish or need to, you can overload the original responder methods from *TouchResponder*. These will be triggered on all touches.
+If you wish or need to, you can overload the original responder methods from *TouchResponder*. These will be triggered on all touches.
 
 ### The simple slider
 
